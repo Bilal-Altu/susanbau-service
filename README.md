@@ -94,6 +94,11 @@ beim Umzug auszutauschen:
    dann der tatsächliche Hoster stehen, und mit ihm wird ein
    Auftragsverarbeitungsvertrag nach Art. 28 DSGVO gebraucht.
 4. `sitemap.xml` und `robots.txt`
+5. **`<meta name="robots">` in allen drei Seiten von `noindex, nofollow` zurück auf
+   `index, follow` stellen.** Die Vorschau unter der GitHub-Adresse steht bewusst nicht
+   im Google-Index, solange im Impressum noch Pflichtangaben fehlen — eine indexierte
+   Seite mit unvollständigem Impressum ist abmahnfähig. Das ist der letzte Schalter, der
+   umgelegt wird, wenn alles andere steht.
 
 Ein guter Domainname wäre `susanbau-service.de`. Danach in der
 [Google Search Console](https://search.google.com/search-console) anmelden und die
