@@ -1,0 +1,161 @@
+# Susanbau Service — Website
+
+Website für **Susanbau Service**, Bubenlachring 14, 68642 Bürstadt.
+Fassadenbau · Verputzarbeiten · Trockenbau.
+
+Dies ist ein **erster Entwurf zur Ansicht**. Farben, Texte und Aufbau lassen sich
+jederzeit ändern — nichts davon ist in Stein gemeißelt.
+
+---
+
+## Was das hier ist
+
+Eine schlichte, schnelle Website ohne Baukasten, ohne Datenbank und ohne monatliche
+Gebühren außer Hosting und Domain. Sie besteht aus ein paar Dateien und läuft auf jedem
+Webspace. Konkret heißt das:
+
+- **Lädt schnell**, auch mit schlechtem Empfang auf der Baustelle
+- **Kein Cookie-Banner**, weil es nichts zuzustimmen gibt: keine Cookies, kein Google
+  Analytics, keine Google-Schriften, keine eingebettete Karte. Beim Aufruf der Seite
+  wird nichts von fremden Servern nachgeladen.
+- **Nichts, was kaputtgehen kann.** Kein Login, kein Update, kein Plugin, das man pflegen muss.
+
+## Aufbau der Seite
+
+Alles steht auf einer einzigen Seite, die Menüpunkte springen nur an die richtige Stelle:
+
+1. **Oben** — Was wir machen, Telefonnummer, zwei Knöpfe
+2. **Leistungen** — Fassadenbau, Verputzarbeiten, Trockenbau
+3. **Ablauf** — vier Schritte vom Anruf bis zur Übergabe
+4. **Referenzen** — Bildergalerie (Fotos folgen)
+5. **Über uns** — Betrieb und Einsatzgebiet
+6. **Fragen** — die sechs häufigsten Fragen
+7. **Kontakt** — Anfrageformular und alle Kontaktwege
+
+Dazu **Impressum** und **Datenschutzerklärung** als eigene Seiten.
+
+Am Handy sitzt unten fest eine Leiste mit **Anrufen · WhatsApp · Anfragen**. Erfahrungsgemäß
+kommt bei Handwerksbetrieben der größte Teil der Anfragen über genau diesen Knopf.
+
+## Wie das Anfrageformular funktioniert
+
+Es gibt **keinen Server im Hintergrund**. Wer das Formular ausfüllt und auf
+„Per WhatsApp senden" drückt, bekommt eine fertig geschriebene WhatsApp-Nachricht an
+**0173 8934868** vorgelegt und muss sie nur noch abschicken. Der zweite Knopf macht
+dasselbe als E-Mail an **susanvolkan@gmx.de**.
+
+Das hat drei Vorteile: Es kann nichts ausfallen, es gibt kein weiteres Postfach zu
+pflegen, und es entstehen keine Datenschutzpflichten für ein Backend.
+
+> Sobald die eigene Firmen-E-Mail-Adresse steht, muss sie an vier Stellen eingetragen
+> werden: in `assets/js/main.js` (ganz oben, Zeile mit `var MAIL`), in `index.html`,
+> in `impressum.html` und in `datenschutz.html`.
+
+---
+
+## Bevor die Seite online geht
+
+Diese Punkte sind noch offen. Sie stehen zusätzlich als `TODO Bilal:` direkt im Quelltext.
+
+| Was | Wo | Warum |
+|---|---|---|
+| **Vollständiger Name des Inhabers** | `impressum.html`, `datenschutz.html` | Pflicht nach § 5 DDG. Ist derzeit gelb markiert offen gelassen — ein falscher Name wäre schlimmer als eine sichtbare Lücke. |
+| **Rechtsform** (Einzelunternehmen, GbR, GmbH …) | `impressum.html` | Bei einer GmbH kommen Registergericht und HRB-Nummer dazu. |
+| **Umsatzsteuer-ID** | `impressum.html` | Nur falls vorhanden. Bei Kleinunternehmerregelung entfällt der Abschnitt ersatzlos. |
+| **Handwerkskammer / Berufsbezeichnung** | `impressum.html` | **Bitte nicht überspringen.** Stuckateurarbeiten (Putz, WDVS) stehen in Anlage A der Handwerksordnung und sind zulassungspflichtig, reine Trockenbaumontage nicht. Am besten einmal auf die Handwerkskarte schauen. |
+| **Erreichbarkeitszeiten** | `index.html` (Topbar, Kontakt, JSON-LD) | Steht bewusst nirgends, solange es nicht bestätigt ist. |
+| **Ist der Vor-Ort-Termin kostenlos?** | `index.html`, Abschnitt „Fragen" | Steht aktuell so drin. Falls nicht, Satz anpassen. |
+| **Fotos** | `assets/img/` | Siehe [BILDER-HIER-ABLEGEN.md](assets/img/BILDER-HIER-ABLEGEN.md) |
+| **Domain** | siehe unten | Solange nicht vorhanden, läuft alles über die GitHub-Adresse. |
+
+## Wenn eine eigene Domain dazukommt
+
+An vier Stellen steht derzeit `https://bilal-altu.github.io/susanbau-service/`. Diese sind
+beim Umzug auszutauschen:
+
+1. `index.html` — `<link rel="canonical">`, `og:url`, `og:image` und die drei Adressen im
+   JSON-LD-Block ganz unten
+2. `impressum.html` — `canonical`
+3. `datenschutz.html` — `canonical` **und** der Abschnitt „Server-Logdateien": Dort muss
+   dann der tatsächliche Hoster stehen, und mit ihm wird ein
+   Auftragsverarbeitungsvertrag nach Art. 28 DSGVO gebraucht.
+4. `sitemap.xml` und `robots.txt`
+
+Ein guter Domainname wäre `susanbau-service.de`. Danach in der
+[Google Search Console](https://search.google.com/search-console) anmelden und die
+`sitemap.xml` einreichen.
+
+## Damit die Seite bei Google gefunden wird
+
+Die Reihenfolge ist wichtiger als die einzelnen Punkte:
+
+1. **Google-Unternehmensprofil anlegen** und verifizieren. Für einen Handwerksbetrieb
+   bringt das mehr als alles andere auf der Website zusammen — damit erscheint der Betrieb
+   in der Karte, wenn jemand „Verputzer Bürstadt" sucht.
+2. **Echte Bewertungen sammeln.** Nach jedem zufriedenen Auftrag freundlich fragen. Auf der
+   Website steht bewusst **kein** Bewertungsabschnitt, weil es noch keine echten Bewertungen
+   gibt — erfundene Rezensionen sind nach § 5b Abs. 3 UWG abmahnfähig. Sobald welche da sind,
+   kommt der Abschnitt dazu.
+3. **Überall dieselben Angaben.** Firmenname, Anschrift und Telefonnummer müssen auf der
+   Website, im Google-Profil und in Branchenverzeichnissen zeichengenau übereinstimmen.
+4. **Eigene Fotos.** Google bevorzugt echte Bilder, und Kunden erst recht.
+
+---
+
+## Für den technischen Blick
+
+### Aufbau
+
+```
+index.html            Startseite, alle Abschnitte
+impressum.html
+datenschutz.html
+favicon.svg           Symbol für den Browser-Tab
+robots.txt
+sitemap.xml
+assets/
+  css/style.css       das gesamte Design
+  js/main.js          Menü, Einblendungen, Formular
+  fonts/              Archivo + Inter, lokal (SIL Open Font License 1.1)
+  img/                Fotos und Logo
+```
+
+Kein Build-Schritt, kein npm, kein Framework. Änderungen an den Dateien sind sofort wirksam.
+
+### Lokal ansehen
+
+```bash
+npx --yes http-server . -p 4711 -c-1
+```
+
+Dann `http://localhost:4711/` im Browser öffnen.
+
+### Veröffentlichen
+
+GitHub Pages, Quelle: Branch `main`, Ordner `/`. Ein `git push` genügt, die Seite ist nach
+etwa einer Minute aktualisiert.
+
+### Design
+
+Farben und Maße stehen alle als CSS-Variablen ganz oben in `assets/css/style.css`
+(`:root`). Wer dort `--clay` ändert, dreht die Akzentfarbe der gesamten Seite auf einen
+Schlag um. Die Farbwelt heißt „Kalk & Anthrazit": warmer Kalkton als Grundfläche mit
+feiner Putzkörnung, Anthrazit für Text und dunkle Abschnitte, Terrakotta als Akzent —
+angelehnt an das Material, mit dem der Betrieb arbeitet.
+
+Die Kontraste sind gegen WCAG 2.1 AA geprüft; wo eine Farbe knapp war, steht die
+Begründung als Kommentar daneben.
+
+### Logo
+
+Das Logo ist neu entstanden, es gab vorher keines. Wortmarke **SUSANBAU** über gesperrtem
+**SERVICE**, davor eine Bildmarke aus drei Strichen: der Putzauftrag in Lagen, mit der
+Traufel nach rechts ausgezogen. Als SVG, also in jeder Größe scharf — vom Favicon bis zur
+Fahrzeugbeschriftung.
+
+- `assets/img/logo-susanbau.svg` — für helle Hintergründe
+- `assets/img/logo-susanbau-hell.svg` — für dunkle Hintergründe
+- `favicon.svg` — nur die Bildmarke, für den Browser-Tab
+
+Fürs Google-Unternehmensprofil wird ein quadratisches PNG gebraucht; das lässt sich aus
+`favicon.svg` in jeder gewünschten Größe exportieren.

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Susanbau Service">
+  <!-- Terrakotta als Grundfläche statt Anthrazit: Ein dunkles Kästchen verschwindet
+       in dunklen Browser-Tableisten. Das Orange hält sich auf hell wie auf dunkel. -->
+  <rect width="32" height="32" rx="7" fill="#c85a2b"/>
+  <!-- Drei Putzlagen, mit der Traufel nach rechts ausgezogen und auslaufend.
+       Bewusst als Pfade und nicht als Buchstabe: Bei 16 px hinge ein Zeichen von
+       den Systemschriften ab, ein Pfad sieht auf jedem Gerät gleich aus. -->
+  <g fill="#ffffff">
+    <path d="M6 7.4 L26 6.4 L26 7.8 L6 11.4 Z"/>
+    <path d="M6 13.6 L22.5 12.9 L22.5 14.2 L6 17.6 Z"/>
+    <path d="M6 19.8 L18 19.3 L18 20.5 L6 23.8 Z"/>
+  </g>
+</svg>

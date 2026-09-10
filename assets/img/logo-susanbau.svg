@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80" role="img" aria-label="Susanbau Service">
+  <title>Susanbau Service</title>
+  <!-- Bildmarke: drei Putzlagen, ausgezogen wie mit der Traufel -->
+  <rect x="0" y="8" width="64" height="64" rx="14" fill="#c85a2b"/>
+  <g fill="#ffffff">
+    <path d="M12 22.8 L52 20.8 L52 23.6 L12 30.8 Z"/>
+    <path d="M12 35.2 L45 33.8 L45 36.4 L12 43.2 Z"/>
+    <path d="M12 47.6 L36 46.6 L36 49 L12 55.6 Z"/>
+  </g>
+  <!-- textLength hält die Wortmarke exakt gleich breit, egal welche Schrift der
+       Betrachter tatsächlich hat. Ohne das würde die Marke außerhalb der Website
+       (Briefkopf, Google-Profil) je nach System unterschiedlich breit laufen. -->
+  <text x="80" y="43" fill="#1f2124" font-family="Archivo, 'Arial Black', 'Segoe UI', sans-serif"
+        font-size="30" font-weight="800" letter-spacing="-0.4"
+        textLength="206" lengthAdjust="spacingAndGlyphs">SUSANBAU</text>
+  <text x="81" y="62" fill="#c85a2b" font-family="Archivo, 'Segoe UI', Arial, sans-serif"
+        font-size="13" font-weight="600" letter-spacing="5.4"
+        textLength="204" lengthAdjust="spacing">SERVICE</text>
+</svg>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bilal-altu.github.io/susanbau-service/sitemap.xml

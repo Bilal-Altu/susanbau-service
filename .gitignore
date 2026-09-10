@@ -1,0 +1,12 @@
+# Editor- und Systemreste
+.DS_Store
+Thumbs.db
+desktop.ini
+*.psd
+*.ai
+
+# Originalfotos vor dem Verkleinern gehoeren nicht ins Repo
+assets/img/original/
+
+# Nur fuer die lokale Vorschau, gehoert nicht zur Website
+.claude/
