@@ -1,0 +1,69 @@
+# =========================================================
+# Susanbau Service — Serverkonfiguration für ALL-INKL (Apache)
+#
+# Diese Datei wird von GitHub Pages ignoriert und wirkt erst,
+# sobald die Seite per FTP auf dem Webspace liegt.
+# =========================================================
+
+# Verzeichnisse ohne index.html sollen keine Dateiliste ausgeben.
+Options -Indexes
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Die Zweitdomain landet auf der Hauptadresse. Ohne diese Umleitung
+  # wäre dieselbe Seite unter zwei Adressen erreichbar, und Google müsste
+  # raten, welche die richtige ist.
+  RewriteCond %{HTTP_HOST} susanbau-service\.de$ [NC]
+  RewriteRule ^ https://www.susanbau.de%{REQUEST_URI} [L,R=301]
+
+  # Bewusst eine einzige Regel für HTTPS und www zusammen:
+  # Zwei getrennte Regeln würden einen Aufruf von http://susanbau.de erst
+  # auf https://susanbau.de schicken — und dort warnt der Browser, solange
+  # das Zertifikat nur auf www ausgestellt ist. Ein Sprung, kein Umweg.
+  RewriteCond %{HTTP_HOST} susanbau\.de$ [NC]
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.susanbau.de%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---------------------------------------------------------
+# Komprimierung — spart auf der Baustelle mit schlechtem Netz
+# spürbar Ladezeit. Bilder und woff2 sind bereits komprimiert
+# und werden bewusst ausgelassen.
+# ---------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------
+# Wie lange der Browser Dateien behalten darf.
+# HTML absichtlich 0 Sekunden: Sonst sieht ein Besucher nach einer
+# Textänderung tagelang die alte Fassung. CSS, JS und Bilder dürfen
+# dagegen lange liegen bleiben.
+# ---------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 month"
+  ExpiresByType application/javascript    "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Verhindert, dass der Browser eine Datei anders interpretiert,
+  # als der Server sie deklariert hat.
+  Header set X-Content-Type-Options "nosniff"
+  # Beim Klick auf einen externen Link wird nur die Domain übergeben,
+  # nicht die vollständige Adresse der Unterseite.
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Die Seite darf nicht in einem fremden Rahmen eingebettet werden.
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

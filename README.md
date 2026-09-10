@@ -82,7 +82,7 @@ Diese Punkte sind noch offen. Sie stehen zusätzlich als `TODO Bilal:` direkt im
 | **Fotos** | `assets/img/` | Siehe [BILDER-HIER-ABLEGEN.md](assets/img/BILDER-HIER-ABLEGEN.md) |
 | **Domain** | siehe unten | Solange nicht vorhanden, läuft alles über die GitHub-Adresse. |
 
-## Wenn eine eigene Domain dazukommt
+## Umzug auf susanbau.de bei ALL-INKL
 
 An vier Stellen steht derzeit `https://bilal-altu.github.io/susanbau-service/`. Diese sind
 beim Umzug auszutauschen:
@@ -100,9 +100,26 @@ beim Umzug auszutauschen:
    Seite mit unvollständigem Impressum ist abmahnfähig. Das ist der letzte Schalter, der
    umgelegt wird, wenn alles andere steht.
 
-Ein guter Domainname wäre `susanbau-service.de`. Danach in der
-[Google Search Console](https://search.google.com/search-console) anmelden und die
-`sitemap.xml` einreichen.
+Dazu auf dem Webspace:
+
+6. **Alle Dateien per FTP hochladen**, inklusive der `.htaccess` — die ist bei vielen
+   FTP-Programmen ausgeblendet, weil sie mit einem Punkt beginnt. Sie regelt die Umleitung
+   auf `https://www.susanbau.de`, die Komprimierung und die Cache-Zeiten.
+7. **Zertifikat für `susanbau.de` und `www.susanbau.de`** im KAS aktivieren (Let's Encrypt,
+   kostenlos). Erst danach greift die Umleitung sauber, sonst warnt der Browser.
+8. **`susanbau-service.de`** als Zweitdomain auf dasselbe Paket legen. Die `.htaccess`
+   leitet sie automatisch auf die Hauptadresse um.
+9. **`volkan@susanbau.de`** anlegen — und danach die Adresse an vier Stellen eintragen:
+   `assets/js/main.js` (Zeile `var MAIL`), `index.html`, `impressum.html`, `datenschutz.html`.
+10. **Auftragsverarbeitungsvertrag** mit ALL-INKL abschließen (im KAS als PDF hinterlegt).
+    Ohne den fehlt die Grundlage dafür, dass dort Besucherdaten in Logdateien anfallen.
+
+Danach in der [Google Search Console](https://search.google.com/search-console) anmelden
+und die `sitemap.xml` einreichen.
+
+Die GitHub-Fassung bleibt als Vorschau bestehen — auf `noindex`, damit sie der echten
+Domain nicht in die Quere kommt. Sie ist praktisch, um Änderungen vorzuführen, bevor sie
+auf den Server gehen.
 
 ## Damit die Seite bei Google gefunden wird
 
@@ -130,6 +147,7 @@ index.html            Startseite, alle Abschnitte
 impressum.html
 datenschutz.html
 favicon.svg           Symbol für den Browser-Tab
+.htaccess             Serverregeln für ALL-INKL (Umleitung, Cache, Komprimierung)
 robots.txt
 sitemap.xml
 assets/
@@ -151,8 +169,15 @@ Dann `http://localhost:4711/` im Browser öffnen.
 
 ### Veröffentlichen
 
-GitHub Pages, Quelle: Branch `main`, Ordner `/`. Ein `git push` genügt, die Seite ist nach
-etwa einer Minute aktualisiert.
+Zwei Orte, zwei Zwecke:
+
+- **Vorschau** — GitHub Pages, Quelle: Branch `main`, Ordner `/`. Ein `git push` genügt,
+  nach etwa einer Minute ist sie aktuell. Steht auf `noindex` und dient nur dazu,
+  Änderungen vorzuführen.
+- **Echte Seite** — ALL-INKL, per FTP in das Verzeichnis von `susanbau.de`. Die
+  `.htaccess` gehört mit hochgeladen und muss auf dem Server sichtbar sein.
+
+Ein Build-Schritt existiert nicht, hochgeladen wird genau das, was im Ordner liegt.
 
 ### Design
 
