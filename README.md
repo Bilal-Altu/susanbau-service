@@ -34,8 +34,22 @@ Alles steht auf einer einzigen Seite, die Menüpunkte springen nur an die richti
 
 Dazu **Impressum** und **Datenschutzerklärung** als eigene Seiten.
 
-Am Handy sitzt unten fest eine Leiste mit **Anrufen · WhatsApp · Anfragen**. Erfahrungsgemäß
-kommt bei Handwerksbetrieben der größte Teil der Anfragen über genau diesen Knopf.
+## Zuerst fürs Handy gebaut
+
+Die meisten Besucher kommen mit dem Telefon, deshalb ist die Handy-Ansicht der Maßstab
+gewesen und nicht der große Bildschirm:
+
+- Unten sitzt fest eine Leiste mit **Anrufen · WhatsApp · Anfragen**. Erfahrungsgemäß kommt
+  bei Handwerksbetrieben der größte Teil der Anfragen über genau diesen Knopf.
+- **Überschrift und Anrufknopf stehen oben**, das Foto kommt darunter. Läge das Bild oben,
+  müsste man sich erst an einem bildschirmhohen Foto vorbeiscrollen, bevor überhaupt
+  dasteht, was der Betrieb macht.
+- Alle Eingabefelder sind **genau 16 Pixel** groß. Alles darunter lässt iPhones beim
+  Antippen automatisch in die Seite hineinzoomen — der Besucher landet dann verschoben im
+  Formular und muss erst wieder herauszoomen.
+- Telefonnummer, WhatsApp-Link, Fußzeilen-Links und der Datenschutz-Haken sind auf
+  **mindestens 44 Pixel** vergrößert, damit man sie mit dem Daumen sicher trifft.
+- Kein seitliches Scrollen, auf keiner Breite.
 
 ## Wie das Anfrageformular funktioniert
 
@@ -157,5 +171,15 @@ Fahrzeugbeschriftung.
 - `assets/img/logo-susanbau-hell.svg` — für dunkle Hintergründe
 - `favicon.svg` — nur die Bildmarke, für den Browser-Tab
 
+In den beiden Logo-Dateien **steckt die Schrift mit drin** (als base64 eingebettet, rund
+47 KB pro Datei). Sie sehen dadurch überall gleich aus — auch auf einem Rechner, auf dem
+Archivo nicht installiert ist, etwa beim Beschriftungsstudio oder in Word. Ohne das
+Einbetten würde jedes Programm eine eigene Ersatzschrift wählen. Archivo steht unter der
+SIL Open Font License 1.1, die das Einbetten ausdrücklich erlaubt.
+
 Fürs Google-Unternehmensprofil wird ein quadratisches PNG gebraucht; das lässt sich aus
 `favicon.svg` in jeder gewünschten Größe exportieren.
+
+Die gesamte Seite ist **serifenlos** gesetzt: **Archivo** für Überschriften und Knöpfe,
+**Inter** für den Fließtext. Beide sind Grotesk-Schriften ohne Serifen, beide liegen lokal
+im Projekt.

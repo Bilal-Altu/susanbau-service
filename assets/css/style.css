@@ -222,6 +222,10 @@ p:last-child { margin-bottom: 0; }
   display: inline-flex;
   align-items: center;
   gap: .45rem;
+  /* 44px, damit die Nummer auch am Handy ein sauberes Tippziel ist —
+     als Textzeile war sie nur 21px hoch. */
+  min-height: 44px;
+  padding-left: .3rem;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -298,7 +302,7 @@ p:last-child { margin-bottom: 0; }
   display: none;
   margin-left: auto;
   width: 46px;
-  height: 42px;
+  height: 46px;
   background: transparent;
   border: 1px solid var(--line-2);
   border-radius: var(--r-sm);
@@ -429,12 +433,18 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 900px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__media { order: -1; }
+  /* Bewusst KEIN order:-1 auf .hero__media. Stünde das Bild oben, müsste
+     man sich am Handy erst an einem knapp bildschirmhohen Foto vorbeiscrollen,
+     bevor überhaupt dasteht, was der Betrieb macht und wo der Anrufknopf ist.
+     Überschrift und Knöpfe zuerst, Bild danach. */
   .hero__badge { left: auto; right: 1rem; bottom: 1rem; }
 }
 @media (max-width: 560px) {
   .trust { grid-template-columns: 1fr; gap: .8rem; }
   .cta-row .btn { width: 100%; }
+  /* Hochformat 4:5 wäre auf 375px rund 425px hoch und würde den Rest der
+     Seite nach unten drücken. */
+  .hero .media--tall { aspect-ratio: 4 / 3; }
 }
 
 /* ---------------------------------------------------------
@@ -712,7 +722,11 @@ p:last-child { margin-bottom: 0; }
 .form textarea {
   width: 100%;
   font: inherit;
-  font-size: .97rem;
+  /* Exakt 16px und keinen Deut kleiner: iOS Safari zoomt die ganze Seite
+     hinein, sobald ein Eingabefeld mit kleinerer Schrift den Fokus bekommt.
+     Der Besucher landet dann verschoben im Formular und muss erst wieder
+     herauszoomen — auf dem Handy der schnellste Weg, eine Anfrage zu verlieren. */
+  font-size: 16px;
   color: #fff;
   background: rgba(255, 255, 255, .06);
   border: 1px solid var(--line-dark);
@@ -747,9 +761,11 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.5;
 }
 .form__check input {
-  width: 1.1rem;
-  height: 1.1rem;
-  margin: .18rem 0 0;
+  /* 18px war mit dem Daumen kaum zu treffen — und wer den Haken nicht
+     setzt, kommt am Formular nicht vorbei. */
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: .05rem 0 0;
   flex: none;
   accent-color: var(--clay);
 }
@@ -783,7 +799,16 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
   margin-bottom: .1rem;
 }
-.contact-list a { color: #fff; text-decoration: none; font-weight: 600; }
+.contact-list a {
+  display: inline-flex;
+  align-items: center;
+  /* Telefon, WhatsApp und E-Mail sind die drei wichtigsten Ziele der
+     ganzen Seite. Als 20px hohe Textzeile waren sie zu knapp zum Tippen. */
+  min-height: 44px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
 .contact-list a:hover { color: var(--clay-lite); }
 .contact-card__note {
   font-size: .87rem;
@@ -840,6 +865,16 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 760px) {
   .footer__grid { grid-template-columns: 1fr; }
   .footer__bottom nav { margin-left: 0; }
+  /* Am Handy bekommt jeder Fußzeilen-Link ein volles Tippziel. Das macht
+     die Fußzeile länger — beim Scrollen stört das niemanden, danebentippen
+     dagegen schon. */
+  .footer ul { gap: 0; }
+  .footer ul a,
+  .footer__bottom nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 /* ---------------------------------------------------------
