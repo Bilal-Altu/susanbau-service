@@ -47,9 +47,18 @@ Liegen in `../video/`.
 
 | Datei | Herkunft | Wo |
 |---|---|---|
-| `hero-mobil.mp4` | IMG_8027 | Startseite am Handy — Hochformat, Verputzer in Nahaufnahme |
-| `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — Querformat, ganze Fassade |
+| `hero-mobil.mp4` | IMG_8026, Hochkant-Ausschnitt | Startseite am Handy — ganze Fassade, stabilisiert |
+| `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
 | `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
+
+**Beide Startseiten-Filme sind stabilisiert**, als stünde die Kamera auf einem Stativ. Das
+iPhone hatte schon selbst ruhig gehalten — nachgemessen springt das Bild von Einzelbild zu
+Einzelbild kaum. Übrig war ein langsames Abdriften über mehrere Sekunden, und das machte die
+Nahtstelle der Schleife unsauber, weil Anfang und Ende gegeneinander verschoben lagen. Der
+Stativ-Modus nimmt das heraus: 70 % weniger Schwanken, die Naht 61 % sauberer. Dafür wird
+das Bild um wenige Prozent enger beschnitten.
+
+Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
 
 Zu jedem Film gehört ein Standbild (`.avif`, `.webp`, `.jpg`). Das ist das, was sofort zu
 sehen ist. Der Film selbst wird erst danach geladen — und bei Datensparmodus oder langsamer

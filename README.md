@@ -44,10 +44,17 @@ Auftrag, und so wird er gezeigt. Sechs Kacheln so zu beschriften, als wären es 
 Projekte, wäre irreführende Werbung — und unnötig: eine Baustelle, ehrlich gezeigt,
 überzeugt mehr als sechs behauptete.
 
-**Der Film auf der Startseite** läuft stumm in Endlosschleife. Am Handy die
-Hochformat-Aufnahme, am großen Bildschirm die Querformat-Aufnahme — beides ist so gefilmt
-worden, es wird also nichts schief zugeschnitten. Die Schleife hat keinen sichtbaren
-Sprung: Das Ende blendet auf den Anfang über.
+**Der Film auf der Startseite** läuft stumm in Endlosschleife und zeigt die ganze
+Fassade mit dem Team auf dem Gerüst — am großen Bildschirm quer, am Handy als
+Hochkant-Ausschnitt derselben Aufnahme. Er ist digital stabilisiert, als stünde die Kamera
+auf einem Stativ. Dadurch liegen Ende und Anfang deckungsgleich übereinander, und die
+Schleife beginnt ohne sichtbaren Sprung von vorn.
+
+Am Handy lief anfangs die Nahaufnahme des Verputzers. Die sah stark aus, ließ sich aber
+nicht sauber schleifen: Der Mann lehnt sich am Ende aus dem Bild und greift am Anfang zur
+Wand, und an der Nahtstelle geisterte ein halb durchsichtiger Handschuh durchs Bild. Die
+Nahaufnahmen vom Handwerk sind weiter auf der Seite zu sehen, bei „Verputzarbeiten“ und
+„Über uns“.
 
 **Auf der Baustelle mit schlechtem Netz** lädt die Seite trotzdem. Zuerst kommt nur ein
 Standbild, der Film erst danach. Bei eingeschaltetem Datensparmodus oder langsamer
