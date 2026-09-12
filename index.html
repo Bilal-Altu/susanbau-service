@@ -126,9 +126,11 @@
        Abschnitt. Geladen wird zuerst nur das Standbild — es ist das größte
        Bild der Seite und bestimmt, wie schnell sie sich aufbaut. Das Video
        hängt main.js erst danach ein, und nur, wenn die Verbindung dafür
-       taugt. Beide Fassungen zeigen dieselbe Fassaden-Aufnahme, am Handy als
-       Hochkant-Ausschnitt. Sie ist stabilisiert, als stünde die Kamera auf
-       einem Stativ — nur so beginnt die Schleife ohne sichtbaren Sprung. -->
+       taugt. Am großen Bildschirm läuft die Fassaden-Aufnahme, stabilisiert,
+       als stünde die Kamera auf einem Stativ — nur so beginnt die Schleife
+       ohne sichtbaren Sprung. Am Handy ist es ein Hochkant-Foto mit einer
+       langsamen Kamerafahrt: Ein Streifen aus der breiten Aufnahme zeigte
+       dort oben nur Gerüst und Fenster, das Foto zeigt den Handwerker. -->
   <div class="hero__buehne" aria-hidden="true">
     <picture>
       <source media="(min-width: 900px)" type="image/avif" srcset="assets/video/hero-desktop.avif" />
@@ -137,7 +139,7 @@
       <source type="image/avif" srcset="assets/video/hero-mobil.avif" />
       <source type="image/webp" srcset="assets/video/hero-mobil.webp" />
       <img class="hero__standbild" src="assets/video/hero-mobil.jpg" alt=""
-           width="720" height="1280" fetchpriority="high" decoding="async" />
+           width="1080" height="1920" fetchpriority="high" decoding="async" />
     </picture>
     <video class="hero__video" muted loop playsinline preload="none"
            data-mobil="assets/video/hero-mobil.mp4"

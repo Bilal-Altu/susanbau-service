@@ -44,17 +44,22 @@ Auftrag, und so wird er gezeigt. Sechs Kacheln so zu beschriften, als wären es 
 Projekte, wäre irreführende Werbung — und unnötig: eine Baustelle, ehrlich gezeigt,
 überzeugt mehr als sechs behauptete.
 
-**Der Film auf der Startseite** läuft stumm in Endlosschleife und zeigt die ganze
-Fassade mit dem Team auf dem Gerüst — am großen Bildschirm quer, am Handy als
-Hochkant-Ausschnitt derselben Aufnahme. Er ist digital stabilisiert, als stünde die Kamera
-auf einem Stativ. Dadurch liegen Ende und Anfang deckungsgleich übereinander, und die
-Schleife beginnt ohne sichtbaren Sprung von vorn.
+**Am großen Bildschirm** läuft ein stummer Film in Endlosschleife: die ganze Fassade mit
+dem Team auf dem Gerüst. Er ist digital stabilisiert, als stünde die Kamera auf einem
+Stativ. Dadurch liegen Ende und Anfang deckungsgleich übereinander, und die Schleife
+beginnt ohne sichtbaren Sprung von vorn.
 
-Am Handy lief anfangs die Nahaufnahme des Verputzers. Die sah stark aus, ließ sich aber
-nicht sauber schleifen: Der Mann lehnt sich am Ende aus dem Bild und greift am Anfang zur
-Wand, und an der Nahtstelle geisterte ein halb durchsichtiger Handschuh durchs Bild. Die
-Nahaufnahmen vom Handwerk sind weiter auf der Seite zu sehen, bei „Verputzarbeiten“ und
-„Über uns“.
+**Am Handy** ist es ein Hochkant-Foto mit einer langsamen, weichen Kamerafahrt auf den
+Handwerker zu und wieder zurück. Zwei Vorgänger haben nicht funktioniert: Die Nahaufnahme
+des Verputzers ließ sich nicht sauber schleifen — der Mann lehnt sich am Ende aus dem Bild,
+und an der Nahtstelle geisterte ein halb durchsichtiger Handschuh durchs Bild. Und ein
+Hochkant-Streifen aus der breiten Fassadenaufnahme zeigte am Handy oben nur Gerüst und
+Fenster. Das Foto zeigt den Handwerker genau dort, wo man hinschaut, und ist gestochen
+scharf.
+
+**Farben.** Das iPhone filmt in HDR. Ohne Umrechnung wirken solche Filme im Browser grau
+und flau — so sah die erste Fassung aus. Das Build-Skript rechnet sie jetzt auf normale
+Bildschirmfarben um.
 
 **Auf der Baustelle mit schlechtem Netz** lädt die Seite trotzdem. Zuerst kommt nur ein
 Standbild, der Film erst danach. Bei eingeschaltetem Datensparmodus oder langsamer

@@ -47,11 +47,11 @@ Liegen in `../video/`.
 
 | Datei | Herkunft | Wo |
 |---|---|---|
-| `hero-mobil.mp4` | IMG_8026, Hochkant-Ausschnitt | Startseite am Handy — ganze Fassade, stabilisiert |
+| `hero-mobil.mp4` | IMG_8013 (Foto) | Startseite am Handy — langsame Kamerafahrt auf den Handwerker |
 | `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
 | `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
 
-**Beide Startseiten-Filme sind stabilisiert**, als stünde die Kamera auf einem Stativ. Das
+**Der Film am großen Bildschirm ist stabilisiert**, als stünde die Kamera auf einem Stativ. Das
 iPhone hatte schon selbst ruhig gehalten — nachgemessen springt das Bild von Einzelbild zu
 Einzelbild kaum. Übrig war ein langsames Abdriften über mehrere Sekunden, und das machte die
 Nahtstelle der Schleife unsauber, weil Anfang und Ende gegeneinander verschoben lagen. Der
@@ -59,6 +59,17 @@ Stativ-Modus nimmt das heraus: 70 % weniger Schwanken, die Naht 61 % sauberer. D
 das Bild um wenige Prozent enger beschnitten.
 
 Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
+
+**Der Handy-Film ist ein Foto in Bewegung.** IMG_8013 wird hochkant zugeschnitten, und eine
+weiche Kamerafahrt zoomt leicht auf den Handwerker zu und wieder zurück — an beiden
+Wendepunkten abgebremst, deshalb ohne sichtbaren Sprung in der Schleife. Gerechnet wird mit
+Pixelbruchteilen (`perspective`), nicht mit `zoompan`: Das rundet auf ganze Pixel und
+ruckelt bei so langsamen Fahrten sichtbar. Dasselbe Foto steht auch in der Galerie der
+aktuellen Baustelle (`04-team-geruest-fassade`).
+
+**Alle Filme sind von HDR umgerechnet.** Das iPhone filmt mit 10 Bit und HLG-Kennlinie.
+Ohne Umrechnung wirkt das im Browser grau und flau; das Skript bringt es mit der
+Mobius-Kurve auf normale Bildschirmfarben.
 
 Zu jedem Film gehört ein Standbild (`.avif`, `.webp`, `.jpg`). Das ist das, was sofort zu
 sehen ist. Der Film selbst wird erst danach geladen — und bei Datensparmodus oder langsamer
