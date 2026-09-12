@@ -27,12 +27,36 @@ Alles steht auf einer einzigen Seite, die Menüpunkte springen nur an die richti
 1. **Oben** — Was wir machen, Telefonnummer, zwei Knöpfe
 2. **Leistungen** — Fassadenbau, Verputzarbeiten, Trockenbau
 3. **Ablauf** — vier Schritte vom Anruf bis zur Übergabe
-4. **Referenzen** — Bildergalerie (Fotos folgen)
+4. **Aktuelle Baustelle** — Fotos und Film vom Mehrfamilienhaus in Bürstadt
 5. **Über uns** — Betrieb und Einsatzgebiet
 6. **Fragen** — die sechs häufigsten Fragen
 7. **Kontakt** — Anfrageformular und alle Kontaktwege
 
 Dazu **Impressum** und **Datenschutzerklärung** als eigene Seiten.
+
+## Die Fotos und der Film
+
+Alles, was auf der Seite zu sehen ist, stammt von **einer** Baustelle: dem Mehrfamilienhaus
+in Bürstadt, aufgenommen am 10. und 12. September 2026. Kein einziges gekauftes Bild.
+
+Deshalb heißt der Abschnitt auch „Aktuelle Baustelle" und nicht „Referenzen". Es ist ein
+Auftrag, und so wird er gezeigt. Sechs Kacheln so zu beschriften, als wären es sechs
+Projekte, wäre irreführende Werbung — und unnötig: eine Baustelle, ehrlich gezeigt,
+überzeugt mehr als sechs behauptete.
+
+**Der Film auf der Startseite** läuft stumm in Endlosschleife. Am Handy die
+Hochformat-Aufnahme, am großen Bildschirm die Querformat-Aufnahme — beides ist so gefilmt
+worden, es wird also nichts schief zugeschnitten. Die Schleife hat keinen sichtbaren
+Sprung: Das Ende blendet auf den Anfang über.
+
+**Auf der Baustelle mit schlechtem Netz** lädt die Seite trotzdem. Zuerst kommt nur ein
+Standbild, der Film erst danach. Bei eingeschaltetem Datensparmodus oder langsamer
+Mobilverbindung wird er gar nicht geladen — dann bleibt das Standbild stehen, und niemand
+merkt, dass etwas fehlt. Wer im Betriebssystem „Bewegung reduzieren" eingestellt hat,
+bekommt ebenfalls keinen Film.
+
+Welche Datei woher stammt und wie neue Fotos dazukommen, steht in
+[assets/img/MEDIEN.md](assets/img/MEDIEN.md).
 
 ## Zuerst fürs Handy gebaut
 
@@ -79,7 +103,8 @@ Diese Punkte sind noch offen. Sie stehen zusätzlich als `TODO Bilal:` direkt im
 | **Handwerkskammer / Berufsbezeichnung** | `impressum.html` | **Bitte nicht überspringen.** Stuckateurarbeiten (Putz, WDVS) stehen in Anlage A der Handwerksordnung und sind zulassungspflichtig, reine Trockenbaumontage nicht. Am besten einmal auf die Handwerkskarte schauen. |
 | **Erreichbarkeitszeiten** | `index.html` (Topbar, Kontakt, JSON-LD) | Steht bewusst nirgends, solange es nicht bestätigt ist. |
 | **Ist der Vor-Ort-Termin kostenlos?** | `index.html`, Abschnitt „Fragen" | Steht aktuell so drin. Falls nicht, Satz anpassen. |
-| **Fotos** | `assets/img/` | Siehe [BILDER-HIER-ABLEGEN.md](assets/img/BILDER-HIER-ABLEGEN.md) |
+| **Einwilligungen der abgebildeten Personen** | auf Papier, bleibt im Betrieb | **Blockiert den Start.** Auf den Fotos und im Film sind Gesichter zu erkennen. Vordruck zum Ausdrucken: [EINWILLIGUNG-FOTOS.md](EINWILLIGUNG-FOTOS.md) |
+| **Fotos vom Trockenbau** | `assets/img/` | Fehlen komplett, siehe [MEDIEN.md](assets/img/MEDIEN.md) |
 | **Domain** | siehe unten | Solange nicht vorhanden, läuft alles über die GitHub-Adresse. |
 
 ## Umzug auf susanbau.de bei ALL-INKL
@@ -154,7 +179,8 @@ assets/
   css/style.css       das gesamte Design
   js/main.js          Menü, Einblendungen, Formular
   fonts/              Archivo + Inter, lokal (SIL Open Font License 1.1)
-  img/                Fotos und Logo
+  img/                Fotos und Logo (AVIF, WebP, JPEG in mehreren Breiten)
+  video/              Filme als MP4 plus Standbild
 ```
 
 Kein Build-Schritt, kein npm, kein Framework. Änderungen an den Dateien sind sofort wirksam.
@@ -183,9 +209,13 @@ Ein Build-Schritt existiert nicht, hochgeladen wird genau das, was im Ordner lie
 
 Farben und Maße stehen alle als CSS-Variablen ganz oben in `assets/css/style.css`
 (`:root`). Wer dort `--clay` ändert, dreht die Akzentfarbe der gesamten Seite auf einen
-Schlag um. Die Farbwelt heißt „Kalk & Anthrazit": warmer Kalkton als Grundfläche mit
-feiner Putzkörnung, Anthrazit für Text und dunkle Abschnitte, Terrakotta als Akzent —
-angelehnt an das Material, mit dem der Betrieb arbeitet.
+Schlag um. Die Farbwelt heißt „Putz & Schwarz": das Weiß der frisch verputzten Fassade als
+Grundfläche, Schwarz hinter den Bildern und in den dunklen Abschnitten, Terrakotta nur
+noch als kleiner Akzent auf Knöpfen und einem Wort in der Überschrift.
+
+Das war früher anders — warmer Kalkton, Terrakotta überall, eine feine Putzkörnung im
+Hintergrund. Das alles war der Ersatz dafür, dass es keine Fotos gab. Jetzt tragen die
+Bilder die Seite, und das Design hält sich bewusst zurück.
 
 Die Kontraste sind gegen WCAG 2.1 AA geprüft; wo eine Farbe knapp war, steht die
 Begründung als Kommentar daneben.

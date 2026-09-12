@@ -1,7 +1,10 @@
 /* =========================================================
    Susanbau Service — Stylesheet
-   Farbwelt „Kalk & Anthrazit": warmer Kalkton als Grundfläche,
-   Anthrazit für Text und dunkle Abschnitte, Terrakotta als Akzent.
+   Farbwelt „Putz & Schwarz": das Weiß der frisch verputzten
+   Fassade als Grundfläche, Schwarz hinter den Bildern und in
+   den dunklen Abschnitten, Terrakotta nur noch als Akzent.
+   Die Fotos und Filme tragen die Seite — das Design hält sich
+   bewusst zurück.
    ========================================================= */
 
 /* ---------------------------------------------------------
@@ -34,30 +37,35 @@
 }
 
 :root {
-  /* Flächen */
-  --paper:   #f5f1e8;   /* warmer Kalkton */
-  --paper-2: #ece7db;   /* zweite Abschnittsfläche */
+  /* Flächen.
+     Die Werte sind von den Fotos abgenommen: --paper ist der Ton des
+     frischen Putzes an der Fassade, --ink das Anthrazit der gestrichenen
+     Dachuntersicht. Beides kühl — sonst beißt sich die Seite mit dem
+     blauen Himmel und dem grauen Gerüst auf den Bildern. */
+  --paper:   #f4f3f0;   /* Putzweiß, Grundfläche */
+  --paper-2: #e8e7e3;   /* zweite Abschnittsfläche */
   --white:   #ffffff;
-  --ink:     #1f2124;   /* Anthrazit — Text und dunkle Abschnitte */
-  --ink-2:   #2c2f34;
-  --ink-3:   #3a3e44;
+  --ink:     #17181b;   /* Text und dunkle Abschnitte */
+  --ink-2:   #202226;
+  --ink-3:   #2b2e33;
+  --schwarz: #0d0e10;   /* hinter Video — dunkler als --ink, damit das
+                           Bild und nicht die Fläche die Aufmerksamkeit hat */
 
-  /* Akzent.
-     --clay ist die Markenfarbe: Logo, Akzente, Rahmen, große Schrift.
-     Für Flächen mit weißer Schrift darauf ist sie eine Spur zu hell
-     (Weiß auf #c85a2b sind nur 4,2:1). Dafür gibt es --clay-cta mit
-     5,4:1 — optisch praktisch identisch, aber barrierefrei. */
+  /* Akzent. Terrakotta trägt jetzt nur noch den Hauptbutton, ein Wort in
+     der Überschrift und das Logo. Alles andere überlassen wir den Bildern.
+     --clay ist die Markenfarbe; für weiße Schrift darauf ist sie eine Spur
+     zu hell (4,2:1), dafür gibt es --clay-cta mit 5,4:1. */
   --clay:      #c85a2b;
   --clay-cta:  #b34a20;
   --clay-dark: #a8461f;   /* Hover + Textlinks auf hellem Grund (5,2:1) */
-  --clay-soft: #f0e0d5;   /* getönte Fläche, z. B. Icon-Kacheln */
+  --clay-soft: #f1e2da;   /* getönte Fläche, z. B. Icon-Kacheln */
   --clay-lite: #e8875c;   /* Akzentschrift auf Anthrazit (6,2:1) */
 
-  --line:      #e2dcce;
-  --line-2:    #d6cfbe;
+  --line:      #dedcd7;
+  --line-2:    #cfccc6;
   --line-dark: rgba(255, 255, 255, .14);
-  --muted:     #5f5a51;   /* auf --paper 6,1:1 */
-  --muted-dark:#b9b2a6;   /* auf --ink 7,7:1 */
+  --muted:     #5c5e63;   /* auf --paper 5,8:1 */
+  --muted-dark:#a9acb2;   /* auf --ink 7,8:1 */
 
   --wa:      #1f9d55;
   --wa-cta:  #157f43;     /* dunkler, damit weiße Schrift 5,1:1 erreicht */
@@ -65,10 +73,12 @@
   --font-head: "Archivo", "Segoe UI", Arial, sans-serif;
   --font-body: "Inter", "Segoe UI", Arial, sans-serif;
 
-  --h1:   clamp(2.3rem, 1.25rem + 3.5vw, 4rem);
-  --h2:   clamp(1.75rem, 1.2rem + 1.9vw, 2.7rem);
-  --h3:   clamp(1.1rem, 1rem + .4vw, 1.3rem);
-  --lead: clamp(1.02rem, .95rem + .35vw, 1.2rem);
+  /* Größer und enger als vorher. Die Seite lebt von wenigen großen
+     Aussagen über ganzflächigen Bildern, nicht von viel Text. */
+  --h1:   clamp(2.6rem, 1.1rem + 5.2vw, 5.2rem);
+  --h2:   clamp(1.9rem, 1.2rem + 2.4vw, 3.1rem);
+  --h3:   clamp(1.12rem, 1rem + .45vw, 1.35rem);
+  --lead: clamp(1.05rem, .95rem + .4vw, 1.25rem);
 
   --shell: 1200px;
   --pad-x: clamp(1.1rem, .5rem + 2.4vw, 2.75rem);
@@ -76,16 +86,20 @@
   --r:     10px;
   --r-sm:  6px;
 
-  --shadow-s: 0 1px 2px rgba(31, 33, 36, .05), 0 4px 14px rgba(31, 33, 36, .05);
-  --shadow-m: 0 2px 6px rgba(31, 33, 36, .06), 0 18px 40px rgba(31, 33, 36, .09);
-  --shadow-l: 0 30px 70px rgba(31, 33, 36, .16);
+  --shadow-s: 0 1px 2px rgba(13, 14, 16, .05), 0 4px 14px rgba(13, 14, 16, .05);
+  --shadow-m: 0 2px 6px rgba(13, 14, 16, .06), 0 18px 40px rgba(13, 14, 16, .10);
+  --shadow-l: 0 30px 70px rgba(13, 14, 16, .18);
 
-  /* Putzkörnung. Als data:-URI und nicht als Bilddatei: kostet keinen
-     zusätzlichen Request und hält die Regel „nichts wird von fremden
-     Servern nachgeladen" ein. feColorMatrix nimmt dem Rauschen die
-     Farbe, sonst schimmert es bunt. */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-  --grain-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+  /* Die Putzkörnung im Hintergrund ist weg. Sie war der Ersatz für echte
+     Struktur, solange es keine Fotos gab — jetzt liefert die Wand selbst
+     die Struktur, und zwei Körnungen übereinander sehen schmutzig aus. */
+  --grain: none;
+
+  /* Auf den schwarzen Flächen bleibt ein Hauch Rauschen, aber nicht als
+     Deko: Große dunkle Verläufe über dem Video zeigen sonst sichtbare
+     Streifen, weil 8 Bit pro Kanal dafür zu grob sind. Das Rauschen bricht
+     sie auf. feColorMatrix nimmt ihm die Farbe, sonst schimmert es bunt. */
+  --grain-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -248,7 +262,7 @@ p:last-child { margin-bottom: 0; }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(245, 241, 232, .92);
+  background: rgba(244, 243, 240, .92);
   backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
@@ -363,23 +377,98 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------------------------------------------------------
-   Hero
+   Hero — randloses Video
+
+   Das Video liegt ganzflächig hinter dem Text. Damit es bis unter die
+   Kopfleiste durchläuft, zieht sich der Hero um deren Höhe nach oben und
+   schiebt seinen Inhalt um denselben Betrag wieder herunter. --kopf-h
+   misst main.js nach dem Laden; der Wert hier ist nur die Schätzung für
+   den Fall, dass kein JavaScript läuft — dann sitzt der Text ein paar
+   Pixel anders, mehr passiert nicht.
+
+   Die Klasse .hat-hero steht nur auf der Startseite am <body>. Impressum
+   und Datenschutz haben kein Video und behalten ihre helle Kopfleiste.
    --------------------------------------------------------- */
-.hero { padding: clamp(2.5rem, 1rem + 5vw, 5rem) 0 clamp(2.5rem, 1rem + 4vw, 4.5rem); }
-.hero__grid {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: center;
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  /* svh statt vh: Auf dem iPhone wächst und schrumpft vh, sobald die
+     Adressleiste ein- oder ausfährt. Der Hero würde bei jedem Scrollen
+     um 60 Pixel springen. */
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--kopf-h, 125px));
+  padding-top: calc(var(--kopf-h, 125px) + 2rem);
+  padding-bottom: clamp(2.5rem, 1rem + 5vw, 5.5rem);
+  background: var(--schwarz);
+  color: #fff;
+  overflow: hidden;
 }
-.hero h1 { margin-bottom: .45em; }
-.hero h1 .hl {
-  color: var(--clay);
-  /* Ein gezogener Putzstrich unter dem Wort — dieselbe Geste wie im Logo. */
-  background: linear-gradient(var(--clay-soft), var(--clay-soft)) 0 88% / 100% .26em no-repeat;
-  padding-inline: .06em;
+
+.hero__buehne {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--schwarz);
 }
-.hero .lead { color: var(--muted); font-size: var(--lead); max-width: 34em; }
+.hero__standbild,
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Das Video liegt über dem Standbild und wird eingeblendet, sobald es
+   wirklich läuft. Sein erstes Bild ist dasselbe Bild, deshalb sieht man
+   keinen Wechsel — nur, dass sich plötzlich etwas bewegt. Lädt es nie,
+   bleibt das Standbild stehen und niemand merkt etwas. */
+.hero__video { opacity: 0; transition: opacity .9s ease; }
+.hero__video.is-da { opacity: 1; }
+
+/* Zwei Verläufe übereinander machen die Schrift lesbar, ohne das Bild
+   zuzudecken:
+
+   - von unten nach oben, damit Überschrift und Knöpfe stehen, und oben
+     noch einmal etwas, sonst verschwindet die Kopfleiste im hellen Himmel;
+   - von links nach rechts, weil der Text links steht. Ohne diesen zweiten
+     Verlauf müsste der erste viel kräftiger sein, und dann wäre auch die
+     rechte Bildhälfte grau — genau die, die das Haus zeigt.
+
+   Das Rauschen darüber verhindert die Streifen, die große dunkle Verläufe
+   auf 8-Bit-Bildschirmen sonst zeigen. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    var(--grain-dark),
+    linear-gradient(to right,
+      rgba(13, 14, 16, .62) 0%,
+      rgba(13, 14, 16, .34) 34%,
+      rgba(13, 14, 16, 0) 64%),
+    linear-gradient(to top,
+      rgba(13, 14, 16, .92) 0%,
+      rgba(13, 14, 16, .70) 24%,
+      rgba(13, 14, 16, .34) 52%,
+      rgba(13, 14, 16, .16) 74%,
+      rgba(13, 14, 16, .50) 100%);
+}
+
+.hero__in { position: relative; width: 100%; }
+.hero__text { max-width: 42rem; }
+.hero h1 { color: #fff; margin-bottom: .38em; }
+.hero h1 .hl { color: var(--clay-lite); }
+.hero .lead {
+  color: rgba(255, 255, 255, .85);
+  font-size: var(--lead);
+  max-width: 34em;
+}
+.hero .eyebrow { color: #fff; }
 
 .eyebrow {
   font-family: var(--font-head);
@@ -391,60 +480,87 @@ p:last-child { margin-bottom: 0; }
   margin: 0 0 .9rem;
 }
 
-.cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.6rem 0 0; }
+.cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.7rem 0 0; }
 
+/* Schmaler Streifen direkt unter dem Video. */
+.versprechen {
+  padding-block: clamp(1.8rem, 1.2rem + 1.8vw, 2.8rem);
+  border-bottom: 1px solid var(--line);
+}
 .trust {
   list-style: none;
-  margin: 2.2rem 0 0;
-  padding: 1.4rem 0 0;
-  border-top: 1px solid var(--line);
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
+  gap: clamp(1.1rem, 2.5vw, 2.4rem);
 }
 .trust li { display: flex; flex-direction: column; gap: .1rem; }
 .trust strong { font-family: var(--font-head); font-size: 1.02rem; letter-spacing: -.01em; }
 .trust span { color: var(--muted); font-size: .88rem; line-height: 1.45; }
 
-.hero__media { position: relative; }
-.hero__badge {
-  position: absolute;
-  left: clamp(-1rem, -1vw, 0rem);
-  bottom: 1.6rem;
-  background-color: var(--ink);
-  background-image: var(--grain-dark);
-  color: #fff;
-  padding: 1rem 1.25rem;
-  border-radius: var(--r);
-  box-shadow: var(--shadow-m);
-  display: grid;
-  gap: .05rem;
-  max-width: 15rem;
+/* Kopfleiste über dem Video: durchsichtig, bis gescrollt wird.
+   Die obere Zeile braucht dabei eine eigene Ebene — der Hero zieht sich
+   über sie und würde sie sonst einfach zudecken. Der Kopfbereich darunter
+   hat mit z-index 60 schon eine. */
+.hat-hero .topbar {
+  position: relative;
+  z-index: 61;
+  background-color: transparent;
+  background-image: none;
+  color: rgba(255, 255, 255, .82);
 }
-.hero__badge-k {
-  font-size: .72rem;
+.hat-hero .site-header:not(.is-stuck) {
+  background: transparent;
+  backdrop-filter: none;
+  color: #fff;
+}
+.hat-hero .site-header:not(.is-stuck) .nav > a { color: #fff; }
+/* Das gesperrte SERVICE unter der Wortmarke steht sonst in Terrakotta auf
+   grauem Putz — bei der Größe nicht mehr lesbar. Über dem Video deshalb der
+   hellere Ton, auf der weißen Leiste bleibt es beim Markenfarbton. */
+.hat-hero .site-header:not(.is-stuck) .brand__sub { fill: var(--clay-lite); }
+.hat-hero .site-header:not(.is-stuck) .burger span { background: #fff; }
+.hat-hero .site-header:not(.is-stuck) .burger { border-color: rgba(255, 255, 255, .35); }
+
+/* Hinweis zum Weiterscrollen. Nur am großen Bildschirm — am Handy sitzt
+   unten schon die Anrufleiste, und zwei Dinge am selben Rand sind einer
+   zu viel. */
+.hero__cue {
+  position: absolute;
+  right: var(--pad-x);
+  bottom: clamp(1.2rem, 2vw, 2rem);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: .7rem;
+  font-size: .76rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--clay-lite);
-  font-weight: 700;
+  color: rgba(255, 255, 255, .62);
 }
-.hero__badge-v { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; line-height: 1.2; }
-.hero__badge-s { font-size: .84rem; color: var(--muted-dark); line-height: 1.4; }
+.hero__cue::after {
+  content: "";
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(rgba(255, 255, 255, .55), transparent);
+  animation: cue 2.4s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes cue {
+  0%, 100% { transform: scaleY(.4); opacity: .4; }
+  50%      { transform: scaleY(1);  opacity: 1; }
+}
+@media (min-width: 900px) { .hero__cue { display: flex; } }
 
-@media (max-width: 900px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  /* Bewusst KEIN order:-1 auf .hero__media. Stünde das Bild oben, müsste
-     man sich am Handy erst an einem knapp bildschirmhohen Foto vorbeiscrollen,
-     bevor überhaupt dasteht, was der Betrieb macht und wo der Anrufknopf ist.
-     Überschrift und Knöpfe zuerst, Bild danach. */
-  .hero__badge { left: auto; right: 1rem; bottom: 1rem; }
+@media (max-width: 760px) {
+  /* Die feste Anrufleiste deckt unten rund 62 Pixel ab. Ohne diesen
+     Zuschlag läge der Anfrage-Knopf darunter. */
+  .hero { padding-bottom: 5.5rem; }
 }
 @media (max-width: 560px) {
-  .trust { grid-template-columns: 1fr; gap: .8rem; }
+  .trust { grid-template-columns: 1fr; gap: .75rem; }
   .cta-row .btn { width: 100%; }
-  /* Hochformat 4:5 wäre auf 375px rund 425px hoch und würde den Rest der
-     Seite nach unten drücken. */
-  .hero .media--tall { aspect-ratio: 4 / 3; }
 }
 
 /* ---------------------------------------------------------
@@ -462,8 +578,14 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--line);
   aspect-ratio: 4 / 3;
 }
+/* <picture> bekommt display:contents, damit der Rahmen direkt auf das Bild
+   wirkt. Ohne das läge zwischen beiden noch ein Inline-Element, das unten
+   eine Lücke von ein paar Pixeln erzeugt. */
+.media picture,
+.film picture,
+.card__bild picture { display: contents; }
 .media img { width: 100%; height: 100%; object-fit: cover; }
-.media--tall { aspect-ratio: 4 / 5; }
+.media--tall { aspect-ratio: 3 / 4; }
 .media--wide { aspect-ratio: 3 / 2; }
 
 .media.is-empty::before {
@@ -494,7 +616,9 @@ p:last-child { margin-bottom: 0; }
 .section { padding-block: var(--sec-y); }
 .section--paper2 { background-color: var(--paper-2); background-image: var(--grain); }
 .section--ink {
-  background-color: var(--ink);
+  /* Dasselbe Schwarz wie hinter dem Video. Die dunklen Abschnitte lesen
+     sich dadurch als Fortsetzung des Hero und nicht als eigene Farbe. */
+  background-color: var(--schwarz);
   background-image: var(--grain-dark);
   color: #fff;
 }
@@ -520,7 +644,8 @@ p:last-child { margin-bottom: 0; }
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--r);
-  padding: clamp(1.4rem, 1rem + 1vw, 2rem);
+  /* Das Bild sitzt bündig in der Karte und soll ihre Rundung mitnehmen. */
+  overflow: hidden;
   box-shadow: var(--shadow-s);
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
@@ -529,19 +654,31 @@ p:last-child { margin-bottom: 0; }
   box-shadow: var(--shadow-m);
   border-color: var(--line-2);
 }
-.card__ico {
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--r-sm);
-  background: var(--clay-soft);
-  color: var(--clay-dark);
-  margin-bottom: 1.1rem;
+
+/* Die Symbole von früher sind weg. Sie waren der Ersatz dafür, dass es
+   nichts zu zeigen gab — neben einem echten Foto wären sie nur Beiwerk. */
+.card__bild {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--paper-2);
 }
-.card__ico .ico { width: 28px; height: 28px; }
+.card__bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2, .7, .3, 1);
+}
+.card:hover .card__bild img { transform: scale(1.045); }
+
+.card__in {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.3rem, 1rem + 1vw, 1.9rem);
+}
 .card h3 { margin-bottom: .5em; }
-.card > p { color: var(--muted); font-size: .95rem; }
+.card__in > p { color: var(--muted); font-size: .95rem; }
 
 .ticks { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .5rem; }
 .ticks li {
@@ -562,7 +699,13 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 940px) { .cards { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .cards { grid-template-columns: 1fr; }
+  /* Untereinander wäre ein Hochformat rund 500 Pixel hoch. Man müsste dann
+     an drei bildschirmfüllenden Fotos vorbeiwischen, um die drei Leistungen
+     zu lesen. Quer bleibt jede Karte mit einem Blick erfassbar. */
+  .card__bild { aspect-ratio: 16 / 10; }
+}
 
 /* ---------------------------------------------------------
    Ablauf
@@ -602,14 +745,59 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
 
 /* ---------------------------------------------------------
-   Referenzen
+   Aktuelle Baustelle
+
+   Es ist ein einziges Projekt, und genau so wird es gezeigt: ein Film
+   über die volle Breite, darunter drei Aufnahmen davon. Sechs Kacheln
+   so zu beschriften, als wären es sechs Aufträge, wäre gelogen.
    --------------------------------------------------------- */
+.film {
+  position: relative;
+  margin: 0 0 clamp(.8rem, 1.6vw, 1.3rem);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--r);
+  background: var(--schwarz);
+}
+.film video,
+.film img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.film video { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+.film video.is-da { opacity: 1; }
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(.8rem, 1.6vw, 1.3rem);
 }
-.gallery .media { aspect-ratio: 4 / 3; }
+.gallery .media { aspect-ratio: 3 / 4; }
+
+/* Harte Fakten zum Projekt. Steht bewusst unter den Bildern und nicht
+   darüber: Erst sieht man die Arbeit, dann liest man die Eckdaten. */
+.fakten {
+  margin: clamp(1.6rem, 1rem + 1.5vw, 2.4rem) 0 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--line-2);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.fakten > div { display: flex; flex-direction: column; gap: .15rem; }
+.fakten dt {
+  font-family: var(--font-head);
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.fakten dd { margin: 0; font-weight: 600; font-size: .95rem; }
+
+@media (max-width: 640px) { .fakten { grid-template-columns: 1fr 1fr; } }
 .hint {
   margin-top: 1.6rem;
   padding: .9rem 1.1rem;
@@ -621,8 +809,12 @@ p:last-child { margin-bottom: 0; }
 }
 .section--paper2 .hint { background: rgba(255, 255, 255, .6); }
 
-@media (max-width: 860px) { .gallery { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+  /* Drei Hochformate in zwei Spalten lassen unten eine Lücke. Das letzte
+     Bild nimmt deshalb die ganze Breite und wird dafür quer beschnitten. */
+  .gallery .media:last-child { grid-column: span 2; aspect-ratio: 16 / 10; }
+}
 
 /* ---------------------------------------------------------
    Über uns

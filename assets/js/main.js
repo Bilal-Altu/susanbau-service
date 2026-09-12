@@ -68,6 +68,87 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* ---------- Höhe der Kopfleiste melden ----------
+     Der Hero zieht sich um genau diesen Betrag nach oben, damit das Video
+     bis unter die Kopfleiste durchläuft. Gemessen statt geschätzt, weil die
+     Leiste je nach Schriftgröße, Zoomstufe und Browser unterschiedlich hoch
+     ausfällt. Ohne JavaScript greift der Ersatzwert aus dem Stylesheet. */
+  var topbar = document.querySelector(".topbar");
+  function messeKopf() {
+    if (!header) return;
+    var hoehe = header.offsetHeight + (topbar ? topbar.offsetHeight : 0);
+    document.documentElement.style.setProperty("--kopf-h", hoehe + "px");
+  }
+  messeKopf();
+  window.addEventListener("resize", messeKopf);
+  // Die Schriften kommen erst nach dem ersten Aufbau an und können die
+  // Leiste um ein paar Pixel wachsen lassen. Danach also noch einmal messen.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(messeKopf);
+
+  /* ---------- Videos ----------
+     Filme sind das Schwerste auf dieser Seite. Deshalb gelten drei Regeln:
+
+     1. Erst das Standbild, dann der Film. Das Standbild steht im HTML und
+        ist sofort da; die Videoadresse setzt erst dieser Code. Dadurch
+        konkurriert der Film nicht mit Schrift, Stylesheet und Bild um die
+        Leitung, und die Seite steht schnell.
+     2. Bei „Datensparmodus" oder langsamer Mobilverbindung wird gar kein
+        Film geladen. Ein Bauherr auf der Baustelle bekommt dann eben ein
+        Standbild — das ist besser als eine Seite, die nicht lädt.
+     3. Wer Bewegung im Betriebssystem abgestellt hat, bekommt auch keine.
+
+     Eingeblendet wird der Film erst, wenn er wirklich läuft. Sein erstes
+     Bild ist dasselbe wie das Standbild, deshalb sieht man keinen Wechsel,
+     sondern nur, dass sich plötzlich etwas bewegt. Klappt das Abspielen
+     nicht, bleibt das Standbild stehen und niemand merkt etwas. */
+  var verbindung = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var sparsam = false;
+  if (verbindung) {
+    var art = verbindung.effectiveType || "";
+    sparsam = verbindung.saveData === true ||
+              art === "slow-2g" || art === "2g" || art === "3g";
+  }
+
+  function starteFilm(video, quelle) {
+    if (!video || !quelle) return;
+    video.addEventListener("playing", function () {
+      video.classList.add("is-da");
+    }, { once: true });
+    video.src = quelle;
+    var lauf = video.play();
+    if (lauf && lauf.catch) lauf.catch(function () { /* Standbild bleibt stehen */ });
+  }
+
+  if (!reduceMotion && !sparsam) {
+    var heldVideo = document.querySelector(".hero__video");
+    if (heldVideo) {
+      var breit = window.matchMedia("(min-width: 900px)").matches;
+      var quelle = heldVideo.getAttribute(breit ? "data-desktop" : "data-mobil");
+      if (document.readyState === "complete") {
+        starteFilm(heldVideo, quelle);
+      } else {
+        window.addEventListener("load", function () { starteFilm(heldVideo, quelle); });
+      }
+    }
+
+    // Filme weiter unten auf der Seite erst laden, wenn man in ihre Nähe
+    // kommt. Wer nie so weit scrollt, lädt sie auch nie.
+    var filme = document.querySelectorAll("video[data-film]");
+    if (filme.length && "IntersectionObserver" in window) {
+      var fio = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            starteFilm(entry.target, entry.target.getAttribute("data-film"));
+            obs.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "300px 0px" }
+      );
+      filme.forEach(function (v) { fio.observe(v); });
+    }
+  }
+
   /* ---------- Aktiver Menüpunkt ---------- */
   var navLinks = nav ? nav.querySelectorAll('a[href^="#"]:not(.nav__cta)') : [];
   var sections = [];
