@@ -918,6 +918,19 @@ p:last-child { margin-bottom: 0; }
   .karussell.is-an .ticks { grid-template-columns: 1fr; }
 }
 
+/* Die Einleitung der Leistungen steht unter dem Karussell statt im Kopf:
+   gleiche Schrift wie die übrigen Einleitungen, aber mittig. */
+.leistungen__schluss {
+  max-width: 46rem;
+  margin: clamp(1.8rem, 1rem + 2vw, 2.6rem) auto 0;
+  text-align: center;
+  /* Verteilt die Wörter gleichmäßig — sonst stand am Desktop „Sanierung."
+     allein in der letzten Zeile. Ältere Browser brechen einfach normal um. */
+  text-wrap: balance;
+  color: var(--muted);
+  font-size: var(--lead);
+}
+
 /* ---------------------------------------------------------
    Ablauf
    --------------------------------------------------------- */
@@ -1414,7 +1427,7 @@ p:last-child { margin-bottom: 0; }
     padding-block: 1.2rem;
   }
   .section--ink h3, .step h3, .contact-card h3, .footer h4, .contact-list a { color: #000 !important; }
-  .step p, .sec-head__lead, .contact-list b, .footer, .form label { color: #333 !important; }
+  .step p, .sec-head__lead, .leistungen__schluss, .contact-list b, .footer, .form label { color: #333 !important; }
   .card, .contact-card, .media { border: 1px solid #999; box-shadow: none; }
   .reveal { opacity: 1 !important; transform: none !important; }
   /* Auf Papier dreht sich nichts: die drei Leistungen nebeneinander. */
