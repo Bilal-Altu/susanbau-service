@@ -42,7 +42,11 @@
 <!-- Schriften lokal gehostet (keine Verbindung zu Google-Servern, DSGVO-freundlich) -->
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="assets/css/style.css" />
+<!-- ?v= nach JEDER Änderung an style.css oder main.js hochzählen — hier, in
+     impressum.html und datenschutz.html. Sonst bekommen wiederkehrende
+     Besucher neues HTML mit altem Stylesheet: ALL-INKL speichert CSS und JS
+     laut .htaccess einen Monat zwischen, GitHub Pages zehn Minuten. -->
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-13-2" />
 
 <script>
   /* Sicherheitsnetz: Sollte ein Bild fehlen oder nicht laden, zeigt der
@@ -788,7 +792,7 @@
   </a>
 </nav>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=2026-09-13-2"></script>
 
 <!-- ============ STRUKTURIERTE DATEN ============ -->
 <!-- Bewusst OHNE aggregateRating, foundingDate und openingHours: Diese Angaben

@@ -49,6 +49,10 @@ DirectoryIndex index.html
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html                 "access plus 0 seconds"
+  # CSS und JS einen Monat: Das geht nur gut, weil die HTML-Seiten sie mit
+  # ?v=... einbinden. Nach jeder Änderung an style.css oder main.js die Zahl
+  # in allen drei HTML-Seiten hochzählen, sonst sehen Besucher neues HTML
+  # mit altem Stylesheet.
   ExpiresByType text/css                  "access plus 1 month"
   ExpiresByType application/javascript    "access plus 1 month"
   ExpiresByType image/jpeg                "access plus 1 year"
