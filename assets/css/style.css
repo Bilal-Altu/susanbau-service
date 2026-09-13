@@ -310,7 +310,18 @@ p:last-child { margin-bottom: 0; }
 .nav a:not(.nav__cta):hover::after,
 .nav a.is-active::after { transform: scaleX(1); }
 .nav a.is-active { color: var(--clay-dark); }
-.nav__cta { margin-left: .5rem; }
+/* Bewusst .nav a.nav__cta und nicht nur .nav__cta: .nav a (Element + Klasse)
+   wiegt schwerer als .btn und gab dem Knopf sonst Innenabstand, Gewicht und
+   Größe der Textlinks — links und rechts 1,6 px, die Schrift stieß an den
+   Rand. Feste Höhe mit line-height 1, damit er auf ganzen Pixeln sitzt. */
+.nav a.nav__cta {
+  margin-left: .5rem;
+  min-height: 42px;
+  padding: 0 1.15rem;
+  font-weight: 700;
+  font-size: .92rem;
+  line-height: 1;
+}
 
 .burger {
   display: none;
@@ -368,9 +379,14 @@ p:last-child { margin-bottom: 0; }
     border-bottom: 1px solid var(--line);
   }
   .nav a::after { display: none; }
-  .nav__cta {
+  /* Rahmen ringsum durchsichtig statt unten weg — sonst ist der Knopf oben
+     einen Pixel dicker als unten und die Schrift sitzt schief. */
+  .nav a.nav__cta {
     margin: 1.4rem 0 0;
-    border-bottom: 0 !important;
+    min-height: 58px;
+    padding: 0 1.35rem;
+    font-size: 1.35rem;
+    border-bottom: 1px solid transparent;
     justify-content: center;
   }
   body.nav-open { overflow: hidden; }
@@ -502,26 +518,31 @@ p:last-child { margin-bottom: 0; }
 /* Kopfleiste über dem Video: durchsichtig, bis gescrollt wird.
    Die obere Zeile braucht dabei eine eigene Ebene — der Hero zieht sich
    über sie und würde sie sonst einfach zudecken. Der Kopfbereich darunter
-   hat mit z-index 60 schon eine. */
-.hat-hero .topbar {
+   hat mit z-index 60 schon eine.
+
+   Alles nur, solange das Handy-Menü zu ist (:not(.nav-open)). Das Menü hat
+   einen hellen Grund; mit diesen Regeln standen Menüpunkte, Logo, das
+   Schließen-X und die obere Zeile weiß auf hell und waren nicht zu sehen.
+   Offen sieht die Kopfleiste deshalb aus wie auf Impressum und Datenschutz. */
+.hat-hero:not(.nav-open) .topbar {
   position: relative;
   z-index: 61;
   background-color: transparent;
   background-image: none;
   color: rgba(255, 255, 255, .82);
 }
-.hat-hero .site-header:not(.is-stuck) {
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) {
   background: transparent;
   backdrop-filter: none;
   color: #fff;
 }
-.hat-hero .site-header:not(.is-stuck) .nav > a { color: #fff; }
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) .nav > a { color: #fff; }
 /* Das gesperrte SERVICE unter der Wortmarke steht sonst in Terrakotta auf
    grauem Putz — bei der Größe nicht mehr lesbar. Über dem Video deshalb der
    hellere Ton, auf der weißen Leiste bleibt es beim Markenfarbton. */
-.hat-hero .site-header:not(.is-stuck) .brand__sub { fill: var(--clay-lite); }
-.hat-hero .site-header:not(.is-stuck) .burger span { background: #fff; }
-.hat-hero .site-header:not(.is-stuck) .burger { border-color: rgba(255, 255, 255, .35); }
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) .brand__sub { fill: var(--clay-lite); }
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) .burger span { background: #fff; }
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) .burger { border-color: rgba(255, 255, 255, .35); }
 
 /* Hinweis zum Weiterscrollen. Nur am großen Bildschirm — am Handy sitzt
    unten schon die Anrufleiste, und zwei Dinge am selben Rand sind einer
