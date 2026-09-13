@@ -3,9 +3,11 @@
 Alle Fotos und Filme auf der Website stammen von **einer** Baustelle: dem Mehrfamilienhaus
 in Bürstadt, aufgenommen am 10. und 12. September 2026 mit dem iPhone.
 
-Es ist bewusst **kein einziges gekauftes Stockfoto** dabei. Ein fremdes Foto als eigene
-Arbeit auszugeben, ist irreführende Werbung nach § 5 UWG — und Bauherren erkennen den
-Unterschied ohnehin sofort.
+Mit **einer Ausnahme** ist kein Stockfoto dabei: Vom Trockenbau gibt es noch keine eigene
+Aufnahme, deshalb zeigt die Karte „Trockenbau" vorerst ein freies Foto von Unsplash — auf der
+Seite sichtbar als **„Symbolbild"** gekennzeichnet. Ein fremdes Foto als eigene Arbeit
+auszugeben, wäre irreführende Werbung nach § 5 UWG, und Bauherren erkennen den Unterschied
+ohnehin sofort. Deshalb der Hinweis im Bild.
 
 ## Die Originale
 
@@ -24,7 +26,7 @@ in den erzeugten Dateien steckt nachweislich keine Ortsangabe mehr.
 |---|---|---|
 | `01-fassade-geruest-buerstadt-*` | IMG_8008 | Eingerüstete Fassade, blauer Himmel — Karte „Fassadenbau" |
 | `02-verputzer-kelle-detail-*` | IMG_8023 | Verputzer mit der Kelle an der Wand — Karte „Verputzarbeiten" |
-| `03-putzstruktur-oberflaeche-*` | Einzelbild aus IMG_8021 | Reine Putzfläche — Karte „Trockenbau" |
+| `03-trockenbau-symbolbild-gipskarton-*` | Unsplash, Foto 2ZMe-E2NBZ0 | Rohbauraum mit gespachteltem Gipskarton — Karte „Trockenbau", als Symbolbild gekennzeichnet |
 | `04-team-geruest-fassade-*` | IMG_8013 | Vier Leute über drei Gerüstlagen |
 | `05-arbeiter-geruest-untersicht-*` | IMG_8024 | Blick vom Gerüst nach oben |
 | `06-team-geruest-quer-*` | IMG_8010 | Zwei Leute über dem Fenstersturz |
@@ -36,10 +38,19 @@ Browser sucht sich selbst aus, was er kann und braucht — ein Handy lädt die k
 ein großer Bildschirm die große. AVIF ist etwa viermal kleiner als JPEG bei gleichem
 Aussehen; die JPEG-Fassung ist nur für ältere Browser da.
 
-**Die Nummer 03 ist kein Trockenbau-Projekt.** Von Trockenbau gibt es bisher keine einzige
-Aufnahme. Statt ein fremdes Innenraumfoto zu nehmen, steht dort eine echte Putzoberfläche
-als Materialbild, und der Alternativtext sagt genau das. Sobald Innenaufnahmen da sind,
-wird es ersetzt.
+**Die Nummer 03 ist ein Symbolbild, kein eigenes Projekt.** Nachweis für Quelle und Lizenz:
+
+| | |
+|---|---|
+| Quelle | https://unsplash.com/de/fotos/ein-grosser-raum-mit-viel-weisser-farbe-an-den-wanden-2ZMe-E2NBZ0 |
+| Fotograf | Brian Wangenheim |
+| Lizenz | Unsplash-Lizenz — laut Unsplash kein Unsplash+-Bild, also frei |
+| Heruntergeladen | 13.09.2026, 2000 × 1334 px; das Original liegt unter `C:\Users\bilal\Desktop\Susanbau\Stock\` |
+| Ausschnitt | oben links, 1560 × 1033 px — Decke und Wände, ohne den Stuhl rechts unten |
+
+Im Bild steht klein „Symbolbild", der Alternativtext sagt dasselbe. Sobald Volkan einen
+Trockenbau-Raum fotografiert hat, wird es ersetzt und der Hinweis entfernt. Die frühere
+Putzfläche aus IMG_8021 wird nicht mehr verwendet.
 
 ## Filme
 
@@ -105,7 +116,9 @@ Skript und muss für ein neues Foto um eine Zeile ergänzt werden.
 ## Was noch fehlt
 
 - **Trockenbau innen.** Ständerwand, abgehängte Decke, gespachtelte Fläche. Der wichtigste
-  Nachschub — ein Drittel der Leistungen hat bisher kein eigenes Bild.
+  Nachschub — ein Drittel der Leistungen hat bisher nur ein Symbolbild. Am besten ein heller
+  Raum, gern Dachgeschoss mit Dachschräge, quer fotografiert, ohne Leute und Werkzeug im
+  Vordergrund.
 - **Das Team vor dem Fahrzeug.** Klassisches Vertrauensbild, fehlt.
 - **Ein fertiges Haus ohne Gerüst.** Alles Vorhandene zeigt die Baustelle, nicht das
   Ergebnis. Ein „Vorher/Nachher" wäre das stärkste Argument überhaupt.

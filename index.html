@@ -46,7 +46,7 @@
      impressum.html und datenschutz.html. Sonst bekommen wiederkehrende
      Besucher neues HTML mit altem Stylesheet: ALL-INKL speichert CSS und JS
      laut .htaccess einen Monat zwischen, GitHub Pages zehn Minuten. -->
-<link rel="stylesheet" href="assets/css/style.css?v=2026-09-13-2" />
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-13-3" />
 
 <script>
   /* Sicherheitsnetz: Sollte ein Bild fehlen oder nicht laden, zeigt der
@@ -285,28 +285,33 @@
       </article>
 
       <article class="card">
-        <!-- TODO Bilal: Vom Trockenbau gibt es noch keine einzige Aufnahme —
-             alles Material stammt von der Fassadenbaustelle. Hier steht
-             deshalb bewusst kein Projektfoto, sondern eine Putzoberfläche
-             als Materialbild. Der Alternativtext sagt genau das. Sobald
-             Innenaufnahmen da sind, wird dieses Bild ersetzt. -->
+        <!-- TODO Bilal: Vom Trockenbau gibt es noch keine eigene Aufnahme. Bis
+             dahin steht hier ein freies Foto von Unsplash (Brian Wangenheim,
+             Unsplash-Lizenz), sichtbar als „Symbolbild" gekennzeichnet — ein
+             fremdes Foto darf nicht wie eine eigene Arbeit wirken (§ 5 UWG).
+             Sobald Volkan einen Trockenbau-Raum fotografiert hat: ersetzen und
+             den Hinweis entfernen. Quelle und Lizenz: assets/img/MEDIEN.md. -->
         <div class="card__bild">
           <picture>
             <source type="image/avif"
-                    srcset="assets/img/03-putzstruktur-oberflaeche-480.avif 480w,
-                            assets/img/03-putzstruktur-oberflaeche-960.avif 960w"
+                    srcset="assets/img/03-trockenbau-symbolbild-gipskarton-480.avif 480w,
+                            assets/img/03-trockenbau-symbolbild-gipskarton-960.avif 960w,
+                            assets/img/03-trockenbau-symbolbild-gipskarton-1440.avif 1440w"
                     sizes="(min-width: 701px) 580px, 92vw" />
             <source type="image/webp"
-                    srcset="assets/img/03-putzstruktur-oberflaeche-480.webp 480w,
-                            assets/img/03-putzstruktur-oberflaeche-960.webp 960w"
+                    srcset="assets/img/03-trockenbau-symbolbild-gipskarton-480.webp 480w,
+                            assets/img/03-trockenbau-symbolbild-gipskarton-960.webp 960w,
+                            assets/img/03-trockenbau-symbolbild-gipskarton-1440.webp 1440w"
                     sizes="(min-width: 701px) 580px, 92vw" />
-            <img src="assets/img/03-putzstruktur-oberflaeche-960.jpg"
-                 srcset="assets/img/03-putzstruktur-oberflaeche-480.jpg 480w,
-                         assets/img/03-putzstruktur-oberflaeche-960.jpg 960w"
+            <img src="assets/img/03-trockenbau-symbolbild-gipskarton-960.jpg"
+                 srcset="assets/img/03-trockenbau-symbolbild-gipskarton-480.jpg 480w,
+                         assets/img/03-trockenbau-symbolbild-gipskarton-960.jpg 960w,
+                         assets/img/03-trockenbau-symbolbild-gipskarton-1440.jpg 1440w"
                  sizes="(min-width: 701px) 580px, 92vw"
-                 alt="Nahaufnahme einer verputzten Wandfläche, halb glatt abgezogen, halb noch körnig"
-                 width="480" height="640" loading="lazy" decoding="async" />
+                 alt="Symbolbild: Rohbauraum mit frisch gespachtelten Gipskartonplatten an Wänden und Decke"
+                 width="480" height="318" loading="lazy" decoding="async" />
           </picture>
+          <span class="card__hinweis" aria-hidden="true">Symbolbild</span>
         </div>
         <div class="card__in">
         <h3>Trockenbau</h3>
@@ -792,7 +797,7 @@
   </a>
 </nav>
 
-<script src="assets/js/main.js?v=2026-09-13-2"></script>
+<script src="assets/js/main.js?v=2026-09-13-3"></script>
 
 <!-- ============ STRUKTURIERTE DATEN ============ -->
 <!-- Bewusst OHNE aggregateRating, foundingDate und openingHours: Diese Angaben

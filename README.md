@@ -114,7 +114,7 @@ Diese Punkte sind noch offen. Sie stehen zusätzlich als `TODO Bilal:` direkt im
 | **Erreichbarkeitszeiten** | `index.html` (Topbar, Kontakt, JSON-LD) | Steht bewusst nirgends, solange es nicht bestätigt ist. |
 | **Ist der Vor-Ort-Termin kostenlos?** | `index.html`, Abschnitt „Fragen" | Steht aktuell so drin. Falls nicht, Satz anpassen. |
 | **Einwilligungen der abgebildeten Personen** | auf Papier, bleibt im Betrieb | **Blockiert den Start.** Auf den Fotos und im Film sind Gesichter zu erkennen. Vordruck zum Ausdrucken: [EINWILLIGUNG-FOTOS.md](EINWILLIGUNG-FOTOS.md) |
-| **Fotos vom Trockenbau** | `assets/img/` | Fehlen komplett, siehe [MEDIEN.md](assets/img/MEDIEN.md) |
+| **Fotos vom Trockenbau** | `assets/img/` | Vorerst ein gekennzeichnetes Symbolbild von Unsplash, eigene Aufnahme fehlt — siehe [MEDIEN.md](assets/img/MEDIEN.md) |
 | **Domain** | siehe unten | Solange nicht vorhanden, läuft alles über die GitHub-Adresse. |
 
 ## Umzug auf susanbau.de bei ALL-INKL
