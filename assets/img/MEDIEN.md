@@ -58,6 +58,14 @@ Nahtstelle der Schleife unsauber, weil Anfang und Ende gegeneinander verschoben 
 Stativ-Modus nimmt das heraus: 70 % weniger Schwanken, die Naht 61 % sauberer. Dafür wird
 das Bild um wenige Prozent enger beschnitten.
 
+**Er liegt in 2560 × 1440 vor, rund 6 MB.** Die erste Fassung hatte 1600 × 900 und 1,6 MB
+und sah am PC verpixelt aus: Der Hero füllt den ganzen Bildschirm, und auf einem großen
+Monitor oder einem Laptop mit hoher Pixeldichte rechnet der Browser eine kleinere Datei
+hoch. Gemessen (VMAF, dargestellt wie auf einem 2560er-Monitor) stieg die Bildqualität von
+79 auf 91 von 100. Mehr Auflösung brachte dabei mehr als eine höhere Qualitätsstufe; die
+vollständige Messreihe steht im Skript. Die Größe bremst den Seitenaufbau nicht, weil der
+Film erst nach dem Standbild und nur bei guter Verbindung geladen wird.
+
 Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
 
 **Der Handy-Film ist vom Balkon gegenüber gefilmt** (IMG_8004). Im Original sieht man unten

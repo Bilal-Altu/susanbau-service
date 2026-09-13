@@ -109,15 +109,31 @@
               art === "slow-2g" || art === "2g" || art === "3g";
   }
 
+  function spiele(video) {
+    var lauf = video.play();
+    if (lauf && lauf.catch) lauf.catch(function () { /* Standbild bleibt stehen */ });
+  }
+
+  var gestarteteFilme = [];
   function starteFilm(video, quelle) {
     if (!video || !quelle) return;
     video.addEventListener("playing", function () {
       video.classList.add("is-da");
     }, { once: true });
     video.src = quelle;
-    var lauf = video.play();
-    if (lauf && lauf.catch) lauf.catch(function () { /* Standbild bleibt stehen */ });
+    gestarteteFilme.push(video);
+    spiele(video);
   }
+
+  // Wird die Seite in einem Hintergrund-Tab geöffnet, startet Chrome den Film
+  // nicht — und wechselt man dann zum Tab, läuft er auch nicht von selbst an.
+  // Nachgeprüft: Er blieb auf dem ersten Bild stehen. Deshalb beim
+  // Sichtbarwerden noch einmal anstoßen. Die Filme haben keine Bedienelemente,
+  // ein pausierter Film ist also nie absichtlich angehalten.
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) return;
+    gestarteteFilme.forEach(function (v) { if (v.paused) spiele(v); });
+  });
 
   if (!reduceMotion && !sparsam) {
     var heldVideo = document.querySelector(".hero__video");
