@@ -58,7 +58,7 @@ Liegen in `../video/`.
 
 | Datei | Herkunft | Wo |
 |---|---|---|
-| `hero-mobil.mp4` | IMG_8002, Ausschnitt, gespiegelt | Startseite am Handy — Haus, Gerüst und Arbeiter im Abendlicht, beruhigt |
+| `hero-mobil.mp4` | IMG_8027, Ausschnitt | Startseite am Handy — Verputzer lehnt aus dem Gerüst und zieht den Putz ab |
 | `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
 | `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
 
@@ -79,18 +79,21 @@ Film erst nach dem Standbild und nur bei guter Verbindung geladen wird.
 
 Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
 
-**Der Handy-Film ist von der Straße aus gefilmt** (IMG_8002) und **gespiegelt**. Im Original
-hängt links das Banner der Gerüstbaufirma, unten stehen Dixi-Klo und Material — beides ist
-weggeschnitten, das Dixi auch deshalb, weil seine Schrift gespiegelt seitenverkehrt im Bild
-stünde. Gemessen wird die Bewegung am Haus; danach wird das Bild verschoben, bis das Haus
-stillsteht, und erst dann zugeschnitten und gespiegelt. Nachgemessen gegen den gleichen
-Ausschnitt ohne Beruhigen: gut 80 % weniger Schwanken, das Abdriften praktisch weg (von 27 auf
-1 Promille der Bildhöhe), und die Schleife beginnt ohne sichtbaren Sprung. Farben: Kurve
-hable, danach etwas mehr Kontrast, kühlere Weißen und leicht nachgeschärft — der Putz wirkt
-weiß statt gelblich. Die Datei hat 1,3 MB.
+**Der Handy-Film ist eine Nahaufnahme** (IMG_8027): Der Verputzer lehnt aus dem Gerüst und
+zieht den Putz ab. Am Handy bleibt vom Hero nur die obere Bildhälfte frei — Absatz und
+zweiter Knopf sind dort ausgeblendet —, und genau da liegen Gesicht und Kelle. Der Ausschnitt
+ist leicht vergrößert und oben verankert.
 
-Vorher lief am Handy die Balkon-Aufnahme IMG_8004, davor das Foto IMG_8013 mit einer
-Kamerafahrt. Das Verfahren steckt weiter im Skript (`kamerafahrt`).
+Nicht beruhigt: Der Clip ist von sich aus ruhig (Schwanken 0,43 Promille), und bei
+Nahaufnahmen mit bewegtem Arm hat die Stabilisierung nachweislich geschadet. Die ebenfalls
+geprüfte Nahaufnahme „VID GUT" war fünfmal unruhiger und wurde durch Beruhigen noch schlechter.
+
+Die Schleife läuft von 0 bis 6,1 s mit nur 0,5 s Überblendung. An dieser Stelle hat sich der
+Verputzer fast zurückgezogen, sein Kopf blendet also nur ein, statt kurz doppelt zu erscheinen.
+Farben: Kurve hable, etwas mehr Kontrast, kühlere Weißen, leicht nachgeschärft. 5,6 s, 1,35 MB.
+
+Vorher liefen am Handy IMG_8002 (von der Straße, gespiegelt), die Balkon-Aufnahme IMG_8004 und
+das Foto IMG_8013 mit einer Kamerafahrt. Das Verfahren steckt weiter im Skript (`kamerafahrt`).
 
 **Alle Filme sind von HDR umgerechnet.** Das iPhone filmt mit 10 Bit und HLG-Kennlinie.
 Ohne Umrechnung wirkt das im Browser grau und flau; das Skript bringt es mit der

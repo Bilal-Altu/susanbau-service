@@ -605,6 +605,14 @@ p:last-child { margin-bottom: 0; }
   /* Die feste Anrufleiste deckt unten rund 62 Pixel ab. Ohne diesen
      Zuschlag läge der Anfrage-Knopf darunter. */
   .hero { padding-bottom: 5.5rem; }
+
+  /* Am Handy nur Kategoriezeile, Überschrift und der Telefon-Knopf. Mit
+     Absatz und zweitem Knopf deckte der Text fast das ganze Video zu — frei
+     blieben rund 100 Pixel (Bilal, 13.09.2026). „Anfragen" steht ohnehin in
+     der Anrufleiste, der Absatz sinngemäß in den Leistungen darunter. */
+  .hero .lead,
+  .hero .cta-row .btn--outline-light { display: none; }
+  .hero .cta-row { margin-top: 1.2rem; }
 }
 @media (max-width: 560px) {
   .trust { grid-template-columns: 1fr; gap: .75rem; }
