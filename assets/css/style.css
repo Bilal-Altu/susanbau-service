@@ -313,8 +313,11 @@ p:last-child { margin-bottom: 0; }
 /* Bewusst .nav a.nav__cta und nicht nur .nav__cta: .nav a (Element + Klasse)
    wiegt schwerer als .btn und gab dem Knopf sonst Innenabstand, Gewicht und
    Größe der Textlinks — links und rechts 1,6 px, die Schrift stieß an den
-   Rand. Feste Höhe mit line-height 1, damit er auf ganzen Pixeln sitzt. */
+   Rand. Feste Höhe mit line-height 1, damit er auf ganzen Pixeln sitzt.
+   Die Farbe steht aus demselben Grund hier: In der hellen Kopfleiste nach
+   dem Scrollen bekam er sonst die dunkle Linkfarbe, schwarz auf Terrakotta. */
 .nav a.nav__cta {
+  color: #fff;
   margin-left: .5rem;
   min-height: 42px;
   padding: 0 1.15rem;
@@ -531,6 +534,17 @@ p:last-child { margin-bottom: 0; }
   background-image: none;
   color: rgba(255, 255, 255, .82);
 }
+/* Beim Scrollen wird die obere Zeile zusammen mit der Kopfleiste hell, im
+   selben Ton. Vorher wurde nur die Kopfleiste hell, während die obere Zeile
+   noch durchsichtig über dem Video stand — ein heller Streifen, über und
+   unter ihm Video. Die Zeile scrollt danach wie bisher weg. */
+.hat-hero.is-gescrollt:not(.nav-open) .topbar {
+  background-color: rgba(244, 243, 240, .92);
+  backdrop-filter: saturate(1.4) blur(10px);
+  color: var(--muted);
+}
+.hat-hero.is-gescrollt:not(.nav-open) .topbar__tel { color: var(--ink); }
+.hat-hero.is-gescrollt:not(.nav-open) .topbar__tel:hover { color: var(--clay-dark); }
 .hat-hero:not(.nav-open) .site-header:not(.is-stuck) {
   background: transparent;
   backdrop-filter: none;

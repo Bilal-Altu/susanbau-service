@@ -63,7 +63,12 @@
   /* ---------- Kopfbereich: Schatten beim Scrollen ---------- */
   var header = document.getElementById("header");
   function onScroll() {
-    if (header) header.classList.toggle("is-stuck", window.scrollY > 12);
+    var gescrollt = window.scrollY > 12;
+    if (header) header.classList.toggle("is-stuck", gescrollt);
+    // Auch am <body>: Die obere Zeile liegt außerhalb der Kopfleiste und soll
+    // mit ihr zusammen hell werden. Sonst stand der helle Streifen beim
+    // Anscrollen zwischen Video oben und Video unten.
+    document.body.classList.toggle("is-gescrollt", gescrollt);
   }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
