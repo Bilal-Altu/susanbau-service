@@ -930,8 +930,50 @@ p:last-child { margin-bottom: 0; }
     height: auto;
     grid-template-rows: auto 1fr;
   }
-  .karussell.is-an .card__bild { aspect-ratio: 4 / 3; }
-  .karussell.is-an .ticks { grid-template-columns: 1fr; }
+  /* 16:9 statt 4:3 und etwas engerer Text: Mit 4:3 war die Karte am iPhone
+     höher als der sichtbare Bereich, Pfeile und Zählung lagen unter der
+     Anrufleiste (Bilal, 13.09.2026). */
+  .karussell.is-an .card__bild { aspect-ratio: 16 / 9; }
+  .karussell.is-an .card__in { padding: 1rem 1.15rem 1.1rem; }
+  .karussell.is-an .card__in > p { font-size: .9rem; }
+  .karussell.is-an .ticks { grid-template-columns: 1fr; row-gap: .15rem; margin-top: .6rem; }
+  .karussell.is-an .ticks li { font-size: .86rem; }
+
+  /* Pfeile und Zählung liegen am Handy als kleine Leiste unten rechts im
+     Bild statt unter der Karte — so passt die Karte samt Bedienung auf den
+     Bildschirm. Die Lage wird aus der Kartenbreite gerechnet (cqw = Breite
+     des Karussells): Bildhöhe = Kartenbreite x 9/16. */
+  .karussell { container-type: inline-size; }
+  .karussell.is-an .karussell__steuerung {
+    position: absolute;
+    z-index: 5;
+    top: calc(min(var(--karte-b), 100cqw) * 9 / 16 - 44px - .6rem);
+    right: calc((100cqw - min(var(--karte-b), 100cqw)) / 2 + .6rem);
+    margin: 0;
+    gap: 0;
+    padding: 0 .15rem;
+    border-radius: 999px;
+    background: rgba(13, 14, 16, .55);
+    backdrop-filter: blur(6px);
+  }
+  .karussell.is-an .karussell__pfeil {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+    color: #fff;
+  }
+  .karussell.is-an .karussell__pfeil:hover { background: rgba(255, 255, 255, .12); }
+  .karussell.is-an .karussell__stand { min-width: 2.6em; font-size: .85rem; color: #fff; }
+
+  /* Die unscharfen Nachbarkarten wären am Handy nur schmale, unruhige
+     Streifen am Rand. Sie blenden aus und fangen keine Tipper ab. */
+  .karussell.is-an .card[data-pos="-1"],
+  .karussell.is-an .card[data-pos="1"] {
+    --deckkraft: 0;
+    pointer-events: none;
+  }
 }
 
 /* Die Einleitung der Leistungen steht unter dem Karussell statt im Kopf:

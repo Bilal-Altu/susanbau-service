@@ -58,7 +58,7 @@ Liegen in `../video/`.
 
 | Datei | Herkunft | Wo |
 |---|---|---|
-| `hero-mobil.mp4` | IMG_8004, Ausschnitt | Startseite am Handy — ganzes Haus im Abendlicht, beruhigt |
+| `hero-mobil.mp4` | IMG_8002, Ausschnitt, gespiegelt | Startseite am Handy — Haus, Gerüst und Arbeiter im Abendlicht, beruhigt |
 | `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
 | `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
 
@@ -79,16 +79,18 @@ Film erst nach dem Standbild und nur bei guter Verbindung geladen wird.
 
 Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
 
-**Der Handy-Film ist vom Balkon gegenüber gefilmt** (IMG_8004). Im Original sieht man unten
-das Balkongeländer, oben den Dachüberstand und links das Banner der Gerüstbaufirma — alles
-weggeschnitten. Die Bewegung wird nur am Haus gemessen; am nahen, kontrastreichen Geländer
-würde sich die Stabilisierung sonst festhalten. Danach wird das ganze Bild verschoben, bis
-das Haus stillsteht, und erst dann zugeschnitten. Nachgemessen: rund 70 % weniger
-Schwanken und über 80 % weniger Abdriften; die Schleife beginnt ohne sichtbaren Sprung. Umgerechnet wird hier mit der Kurve hable statt
-mobius, sonst brennt die Fassade im Abendlicht in Weiß aus.
+**Der Handy-Film ist von der Straße aus gefilmt** (IMG_8002) und **gespiegelt**. Im Original
+hängt links das Banner der Gerüstbaufirma, unten stehen Dixi-Klo und Material — beides ist
+weggeschnitten, das Dixi auch deshalb, weil seine Schrift gespiegelt seitenverkehrt im Bild
+stünde. Gemessen wird die Bewegung am Haus; danach wird das Bild verschoben, bis das Haus
+stillsteht, und erst dann zugeschnitten und gespiegelt. Nachgemessen gegen den gleichen
+Ausschnitt ohne Beruhigen: gut 80 % weniger Schwanken, das Abdriften praktisch weg (von 27 auf
+1 Promille der Bildhöhe), und die Schleife beginnt ohne sichtbaren Sprung. Farben: Kurve
+hable, danach etwas mehr Kontrast, kühlere Weißen und leicht nachgeschärft — der Putz wirkt
+weiß statt gelblich. Die Datei hat 1,3 MB.
 
-Vorher lief am Handy das Foto IMG_8013 mit einer Kamerafahrt. Das Verfahren steckt weiter im
-Skript (`kamerafahrt`).
+Vorher lief am Handy die Balkon-Aufnahme IMG_8004, davor das Foto IMG_8013 mit einer
+Kamerafahrt. Das Verfahren steckt weiter im Skript (`kamerafahrt`).
 
 **Alle Filme sind von HDR umgerechnet.** Das iPhone filmt mit 10 Bit und HLG-Kennlinie.
 Ohne Umrechnung wirkt das im Browser grau und flau; das Skript bringt es mit der
