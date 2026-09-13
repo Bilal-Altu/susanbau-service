@@ -47,7 +47,7 @@ Liegen in `../video/`.
 
 | Datei | Herkunft | Wo |
 |---|---|---|
-| `hero-mobil.mp4` | IMG_8013 (Foto) | Startseite am Handy — langsame Kamerafahrt auf den Handwerker |
+| `hero-mobil.mp4` | IMG_8004, Ausschnitt | Startseite am Handy — ganzes Haus im Abendlicht, beruhigt |
 | `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
 | `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
 
@@ -60,12 +60,16 @@ das Bild um wenige Prozent enger beschnitten.
 
 Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
 
-**Der Handy-Film ist ein Foto in Bewegung.** IMG_8013 wird hochkant zugeschnitten, und eine
-weiche Kamerafahrt zoomt leicht auf den Handwerker zu und wieder zurück — an beiden
-Wendepunkten abgebremst, deshalb ohne sichtbaren Sprung in der Schleife. Gerechnet wird mit
-Pixelbruchteilen (`perspective`), nicht mit `zoompan`: Das rundet auf ganze Pixel und
-ruckelt bei so langsamen Fahrten sichtbar. Dasselbe Foto steht auch in der Galerie der
-aktuellen Baustelle (`04-team-geruest-fassade`).
+**Der Handy-Film ist vom Balkon gegenüber gefilmt** (IMG_8004). Im Original sieht man unten
+das Balkongeländer, oben den Dachüberstand und links das Banner der Gerüstbaufirma — alles
+weggeschnitten. Die Bewegung wird nur am Haus gemessen; am nahen, kontrastreichen Geländer
+würde sich die Stabilisierung sonst festhalten. Danach wird das ganze Bild verschoben, bis
+das Haus stillsteht, und erst dann zugeschnitten. Nachgemessen: rund 70 % weniger
+Schwanken und über 80 % weniger Abdriften; die Schleife beginnt ohne sichtbaren Sprung. Umgerechnet wird hier mit der Kurve hable statt
+mobius, sonst brennt die Fassade im Abendlicht in Weiß aus.
+
+Vorher lief am Handy das Foto IMG_8013 mit einer Kamerafahrt. Das Verfahren steckt weiter im
+Skript (`kamerafahrt`).
 
 **Alle Filme sind von HDR umgerechnet.** Das iPhone filmt mit 10 Bit und HLG-Kennlinie.
 Ohne Umrechnung wirkt das im Browser grau und flau; das Skript bringt es mit der

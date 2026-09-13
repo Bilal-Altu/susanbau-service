@@ -49,13 +49,11 @@ dem Team auf dem Gerüst. Er ist digital stabilisiert, als stünde die Kamera au
 Stativ. Dadurch liegen Ende und Anfang deckungsgleich übereinander, und die Schleife
 beginnt ohne sichtbaren Sprung von vorn.
 
-**Am Handy** ist es ein Hochkant-Foto mit einer langsamen, weichen Kamerafahrt auf den
-Handwerker zu und wieder zurück. Zwei Vorgänger haben nicht funktioniert: Die Nahaufnahme
-des Verputzers ließ sich nicht sauber schleifen — der Mann lehnt sich am Ende aus dem Bild,
-und an der Nahtstelle geisterte ein halb durchsichtiger Handschuh durchs Bild. Und ein
-Hochkant-Streifen aus der breiten Fassadenaufnahme zeigte am Handy oben nur Gerüst und
-Fenster. Das Foto zeigt den Handwerker genau dort, wo man hinschaut, und ist gestochen
-scharf.
+**Am Handy** läuft eine Aufnahme vom Balkon gegenüber: das ganze Haus mit Gerüst im
+Abendlicht. Sie ist aus der Hand gefilmt und deshalb beruhigt. Gemessen wird die Bewegung
+nur am Haus, nicht am Balkongeländer im Vordergrund, dann wird das Bild so verschoben, dass
+das Haus stillsteht. Der Ausschnitt ist so gelegt, dass weder das Geländer noch der
+Dachüberstand noch das Banner der Gerüstbaufirma zu sehen sind.
 
 **Farben.** Das iPhone filmt in HDR. Ohne Umrechnung wirken solche Filme im Browser grau
 und flau — so sah die erste Fassung aus. Das Build-Skript rechnet sie jetzt auf normale
