@@ -160,6 +160,19 @@ p:last-child { margin-bottom: 0; }
 }
 .skip-link:focus { left: 0; }
 
+/* Nur für Vorleseprogramme, am Bildschirm unsichtbar. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .shell {
   width: 100%;
   max-width: var(--shell);
@@ -743,6 +756,169 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------------------------------------------------------
+   Leistungen als Karussell
+
+   Nachbau der React-Vorlage „feature-carousel" (shadcn/21st.dev) ohne
+   React — die Seite hat keinen Build-Schritt und bekommt auch keinen.
+   main.js setzt .is-an und schreibt an jede Karte data-pos: 0 ist die
+   Mitte, -1 und 1 sind die Nachbarn. Ohne JavaScript fehlt .is-an, und die
+   drei Karten stehen nebeneinander wie oben.
+
+   Karte: oben drei Fünftel Foto, unten zwei Fünftel Text mit den sechs
+   Stichpunkten in zwei Spalten. Am Handy reicht die Breite dafür nicht —
+   dort einspaltig, und der Textteil darf höher werden.
+   --------------------------------------------------------- */
+.section--karussell {
+  /* Die Nachbarkarten ragen seitlich über den Rand hinaus. */
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+/* 580 x 640, nachgemessen: Bei 560 Breite brachen die langen Stichpunkte
+   zweizeilig um, und „Fassadenbau" brauchte 265 px Text — mehr als zwei
+   Fünftel. Bei 580 sind es höchstens 245 px, 640 hoch lässt 256. Noch
+   breiter schöbe die Nachbarkarten unter die Pfeile. */
+.karussell {
+  --karte-b: 580px;
+  --karte-h: 640px;
+  position: relative;
+}
+.karussell__steuerung { display: none; }
+
+.karussell.is-an .cards {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  perspective: 1200px;
+  /* Senkrecht scrollt der Browser, waagerechtes Wischen kommt bei main.js an. */
+  touch-action: pan-y;
+}
+.karussell.is-an .card {
+  --pos: 0;
+  --groesse: 1;
+  --deckkraft: 1;
+  --unschaerfe: 0px;
+  grid-area: 1 / 1;
+  width: min(var(--karte-b), 100%);
+  height: var(--karte-h);
+  display: grid;
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  z-index: 3;
+  opacity: var(--deckkraft);
+  filter: blur(var(--unschaerfe));
+  transform: translateX(calc(var(--pos) * 45%)) scale(var(--groesse)) rotateY(calc(var(--pos) * -10deg));
+  transition: transform .5s ease, opacity .5s ease, filter .5s ease, box-shadow .5s ease;
+}
+.karussell.is-an .card[data-pos="-1"],
+.karussell.is-an .card[data-pos="1"] {
+  --groesse: .85;
+  --deckkraft: .4;
+  --unschaerfe: 4px;
+  z-index: 2;
+  box-shadow: none;
+  cursor: pointer;
+}
+.karussell.is-an .card[data-pos="-1"] { --pos: -1; }
+.karussell.is-an .card[data-pos="1"]  { --pos: 1; }
+/* Erst ab vier Karten nötig: Alles weiter außen wird ausgeblendet. */
+.karussell.is-an .card[data-pos="-2"],
+.karussell.is-an .card[data-pos="2"] {
+  --groesse: .7;
+  --deckkraft: 0;
+  z-index: 1;
+  visibility: hidden;
+}
+.karussell.is-an .card[data-pos="-2"] { --pos: -2; }
+.karussell.is-an .card[data-pos="2"]  { --pos: 2; }
+
+.karussell.is-an .card__bild { aspect-ratio: auto; }
+.karussell.is-an .card__in {
+  overflow: hidden;
+  padding: 1.2rem 1.6rem 1.3rem;
+}
+.karussell.is-an .card h3 { margin-bottom: .25em; }
+.karussell.is-an .card__in > p { margin: 0; }
+.karussell.is-an .ticks {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.4rem;
+  row-gap: .3rem;
+  margin-top: .8rem;
+}
+.karussell.is-an .ticks li { font-size: .88rem; line-height: 1.4; }
+
+.karussell.is-an .karussell__steuerung {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+.karussell__pfeil {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(6px);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+.karussell__pfeil:hover { background: var(--white); border-color: var(--ink); }
+/* Die Pfeile sind lucide „chevron-left" und „chevron-right" (ISC-Lizenz),
+   als Pfad eingebettet statt als Paket. */
+.karussell__pfeil svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.karussell__stand {
+  margin: 0;
+  min-width: 3.5em;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: .95rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+/* Am großen Bildschirm sitzen die Pfeile wie in der Vorlage links und
+   rechts auf halber Kartenhöhe; die Zählung braucht es dort nicht. */
+@media (min-width: 941px) {
+  .karussell.is-an .karussell__steuerung {
+    position: absolute;
+    /* Etwas nach außen: Durch die Drehung ragen die Nachbarkarten sonst
+       16 px unter die Pfeile. */
+    left: -1.5rem;
+    right: -1.5rem;
+    top: calc(var(--karte-h) / 2);
+    transform: translateY(-50%);
+    justify-content: space-between;
+    margin: 0;
+    pointer-events: none;
+  }
+  .karussell.is-an .karussell__pfeil { pointer-events: auto; }
+  .karussell.is-an .karussell__stand { display: none; }
+}
+
+/* Bis 700 statt 640: Darunter ist die Karte schmaler als 580, und der Text
+   passte nicht mehr in zwei Fünftel. */
+@media (max-width: 700px) {
+  .karussell.is-an .card {
+    height: auto;
+    grid-template-rows: auto 1fr;
+  }
+  .karussell.is-an .card__bild { aspect-ratio: 4 / 3; }
+  .karussell.is-an .ticks { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------
    Ablauf
    --------------------------------------------------------- */
 .steps {
@@ -1241,5 +1417,17 @@ p:last-child { margin-bottom: 0; }
   .step p, .sec-head__lead, .contact-list b, .footer, .form label { color: #333 !important; }
   .card, .contact-card, .media { border: 1px solid #999; box-shadow: none; }
   .reveal { opacity: 1 !important; transform: none !important; }
+  /* Auf Papier dreht sich nichts: die drei Leistungen nebeneinander. */
+  .karussell.is-an .cards { grid-template-columns: repeat(3, 1fr); }
+  .karussell.is-an .card {
+    grid-area: auto;
+    width: auto;
+    height: auto;
+    transform: none;
+    opacity: 1;
+    filter: none;
+    visibility: visible;
+  }
+  .karussell__steuerung { display: none !important; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
 }

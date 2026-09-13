@@ -230,6 +230,129 @@
     }, 1500);
   }
 
+  /* ---------- Leistungen als Karussell ----------
+     Nachbau einer React-Vorlage ohne React. Die Karte in der Mitte ist
+     scharf, die Nachbarn liegen kleiner, gedreht und unscharf dahinter.
+     Weiter geht es per Pfeil, Wischen, Pfeiltaste oder Klick auf eine
+     Nachbarkarte.
+
+     Von selbst dreht es sich nur langsam (alle 7 Sekunden) und nur, solange
+     es im Bild ist. Es hält an, solange die Maus darüber liegt oder der
+     Fokus darin steht, und hört ganz auf, sobald jemand selbst weiterschaltet
+     oder antippt — wer liest, soll nicht mitten im Satz die Karte verlieren.
+     Bei „Bewegung reduzieren" dreht es sich nie von selbst. */
+  var karussell = document.querySelector("[data-karussell]");
+  if (karussell) {
+    var karten = Array.prototype.slice.call(karussell.querySelectorAll(".card"));
+    var anzahl = karten.length;
+    var mitte = Math.floor(anzahl / 2);
+    var aktuell = mitte;
+    var stand = karussell.querySelector("[data-stand]");
+    var ansage = karussell.querySelector("[data-ansage]");
+    var buehne = karussell.querySelector(".cards");
+    var takt = null;
+    var angehalten = reduceMotion;   // endgültig, sobald jemand selbst schaltet
+    var pausiert = false;            // Maus darüber oder Fokus darin
+    var imBild = false;
+
+    karussell.setAttribute("role", "region");
+    karussell.setAttribute("aria-roledescription", "Karussell");
+    karussell.setAttribute("aria-label", "Leistungen");
+    karten.forEach(function (karte, i) {
+      karte.setAttribute("role", "group");
+      karte.setAttribute("aria-roledescription", "Leistung");
+      karte.setAttribute("aria-label", (i + 1) + " von " + anzahl);
+    });
+
+    function zeige(index, vonHand) {
+      aktuell = (index + anzahl) % anzahl;
+      karten.forEach(function (karte, i) {
+        var pos = (i - aktuell + anzahl) % anzahl;
+        if (pos > mitte) pos -= anzahl;
+        karte.setAttribute("data-pos", String(Math.max(-2, Math.min(2, pos))));
+        karte.setAttribute("aria-hidden", pos === 0 ? "false" : "true");
+      });
+      if (stand) stand.textContent = String(aktuell + 1);
+      if (vonHand && ansage) {
+        ansage.textContent = karten[aktuell].querySelector("h3").textContent +
+          ", " + (aktuell + 1) + " von " + anzahl;
+      }
+    }
+
+    function planen() {
+      window.clearTimeout(takt);
+      if (angehalten || pausiert || !imBild || document.hidden) return;
+      takt = window.setTimeout(function () {
+        zeige(aktuell + 1, false);
+        planen();
+      }, 7000);
+    }
+
+    function vonHand(index) {
+      angehalten = true;
+      window.clearTimeout(takt);
+      zeige(index, true);
+    }
+
+    karussell.querySelectorAll("[data-richtung]").forEach(function (knopf) {
+      knopf.addEventListener("click", function () {
+        vonHand(aktuell + Number(knopf.getAttribute("data-richtung")));
+      });
+    });
+
+    // Klick auf eine Nachbarkarte holt sie in die Mitte. Nach einem
+    // Wischer feuert der Browser oft noch einen Klick hinterher — der zählt nicht.
+    var gewischt = false;
+    karten.forEach(function (karte, i) {
+      karte.addEventListener("click", function () {
+        if (gewischt) { gewischt = false; return; }
+        if (i !== aktuell) vonHand(i);
+      });
+    });
+
+    var startX = null;
+    var startY = 0;
+    buehne.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "mouse") return;
+      angehalten = true;
+      window.clearTimeout(takt);
+      startX = e.clientX;
+      startY = e.clientY;
+    });
+    buehne.addEventListener("pointerup", function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        gewischt = true;
+        window.setTimeout(function () { gewischt = false; }, 400);
+        vonHand(aktuell + (dx < 0 ? 1 : -1));
+      }
+    });
+    buehne.addEventListener("pointercancel", function () { startX = null; });
+
+    karussell.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); vonHand(aktuell + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); vonHand(aktuell - 1); }
+    });
+    karussell.addEventListener("mouseenter", function () { pausiert = true; planen(); });
+    karussell.addEventListener("mouseleave", function () { pausiert = false; planen(); });
+    karussell.addEventListener("focusin", function () { pausiert = true; planen(); });
+    karussell.addEventListener("focusout", function () { pausiert = false; planen(); });
+    document.addEventListener("visibilitychange", planen);
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        imBild = entries[0].isIntersecting;
+        planen();
+      }, { threshold: 0.5 }).observe(karussell);
+    }
+
+    zeige(aktuell, false);
+    karussell.classList.add("is-an");
+  }
+
   /* ---------- Anfrageformular ----------
      Bewusst ohne Server: Aus den Eingaben wird eine fertige WhatsApp-Nachricht
      oder eine vorausgefüllte E-Mail gebaut. Es gibt also kein Postfach zu
