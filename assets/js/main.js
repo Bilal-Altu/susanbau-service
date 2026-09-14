@@ -369,6 +369,11 @@
     return el ? el.value.trim() : "";
   }
 
+  // „Worum geht es?" hat keine Vorauswahl mehr und ist kein Pflichtfeld.
+  function leistung() {
+    return val("f-leistung") || "Mehreres / noch unklar";
+  }
+
   function say(text, kind) {
     if (!note) return;
     note.textContent = text;
@@ -416,7 +421,7 @@
     ];
     if (val("f-mail")) lines.push("E-Mail: " + val("f-mail"));
     if (val("f-ort")) lines.push("PLZ / Ort: " + val("f-ort"));
-    lines.push("Leistung: " + val("f-leistung"));
+    lines.push("Leistung: " + leistung());
     lines.push("");
     lines.push(val("f-text"));
     return lines.join("\n");
@@ -426,7 +431,7 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!check()) return;
-      var betreff = "Anfrage über die Website – " + val("f-leistung");
+      var betreff = "Anfrage über die Website – " + leistung();
       window.location.href =
         "mailto:" + MAIL +
         "?subject=" + encodeURIComponent(betreff) +

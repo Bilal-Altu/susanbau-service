@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Verputzer &amp; Fassadenbau Bürstadt – Putz, Fassade, Trockenbau | Susanbau Service</title>
+<title>Fassade, Putz &amp; Trockenbau in Bürstadt | Susanbau Service</title>
 <meta name="description" content="Susanbau Service aus Bürstadt: Fassadenbau, Verputzarbeiten und Trockenbau im Kreis Bergstraße und im Rhein-Neckar-Raum. Jetzt anfragen: 0173 8934868." />
 <!-- TODO Bilal: Beim echten Launch auf "index, follow, max-image-preview:large"
      zurückstellen (in allen drei Seiten). Solange dies nur die Vorschau unter
@@ -46,7 +46,7 @@
      impressum.html und datenschutz.html. Sonst bekommen wiederkehrende
      Besucher neues HTML mit altem Stylesheet: ALL-INKL speichert CSS und JS
      laut .htaccess einen Monat zwischen, GitHub Pages zehn Minuten. -->
-<link rel="stylesheet" href="assets/css/style.css?v=2026-09-14-3" />
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-14-4" />
 
 <script>
   /* Sicherheitsnetz: Sollte ein Bild fehlen oder nicht laden, zeigt der
@@ -621,7 +621,12 @@
 
         <div>
           <label for="f-leistung">Worum geht es?</label>
+          <!-- Ohne Vorauswahl: Stand hier „Fassadenbau" vorbelegt, kam das auch
+               bei Trockenbau-Anfragen an, sobald jemand das Feld übersprang.
+               Leer bleibt es kein Pflichtfeld — main.js schreibt dann
+               „Mehreres / noch unklar" in die Nachricht. -->
           <select id="f-leistung" name="leistung">
+            <option value="">Bitte auswählen</option>
             <option>Fassadenbau</option>
             <option>Verputzarbeiten</option>
             <option>Trockenbau</option>
@@ -721,7 +726,6 @@
           <li><a href="#leistungen">Fassadenbau</a></li>
           <li><a href="#leistungen">Verputzarbeiten</a></li>
           <li><a href="#leistungen">Trockenbau</a></li>
-          <li><a href="#ablauf">Ablauf</a></li>
         </ul>
       </div>
 
@@ -761,7 +765,7 @@
   </a>
 </nav>
 
-<script src="assets/js/main.js?v=2026-09-14-3"></script>
+<script src="assets/js/main.js?v=2026-09-14-4"></script>
 
 <!-- ============ STRUKTURIERTE DATEN ============ -->
 <!-- Bewusst OHNE aggregateRating, foundingDate und openingHours: Diese Angaben
