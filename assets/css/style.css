@@ -475,12 +475,11 @@ p:last-child { margin-bottom: 0; }
   max-width: 34em;
 }
 .hero .eyebrow { color: #fff; }
-/* Am Handy fehlten der Zeile über der Überschrift 8 px (390 px breit), der
-   Punkt hing dann nach „VERPUTZER ·" allein am Zeilenende. Etwas kleiner
-   und enger gesetzt bleibt sie bis 360 px Bildschirmbreite einzeilig. */
-@media (max-width: 480px) {
-  .hero .eyebrow { font-size: .75rem; letter-spacing: .08em; }
-}
+/* Über der Überschrift steht nur der Ort mit Pin. Die drei Gewerke standen
+   dort doppelt zur Überschrift (Bilal, 14.09.2026). Der Pin hat dasselbe
+   Orange wie „Putz" und die Symbole im Kontaktbereich. */
+.hero__ort { display: inline-flex; align-items: center; gap: .4em; }
+.hero__ort .ico { width: 1.35em; height: 1.35em; margin-left: -.1em; color: var(--clay-lite); }
 
 .eyebrow {
   font-family: var(--font-head);
