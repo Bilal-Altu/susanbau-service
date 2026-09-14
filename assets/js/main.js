@@ -228,7 +228,7 @@
 
   /* ---------- Leistungen als Karussell ----------
      Nachbau einer React-Vorlage ohne React. Die Karte in der Mitte ist
-     scharf, die Nachbarn liegen kleiner, gedreht und unscharf dahinter.
+     scharf, von den Nachbarn liegt nur das Foto kleiner und unscharf dahinter.
      Weiter geht es per Pfeil, Wischen, Pfeiltaste oder Klick auf eine
      Nachbarkarte.
 

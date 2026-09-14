@@ -748,13 +748,14 @@ p:last-child { margin-bottom: 0; }
   overflow-x: hidden;
   overflow-x: clip;
 }
-/* 580 x 640, nachgemessen: Bei 560 Breite brachen die langen Stichpunkte
-   zweizeilig um, und „Fassadenbau" brauchte 265 px Text — mehr als zwei
-   Fünftel. Bei 580 sind es höchstens 245 px, 640 hoch lässt 256. Noch
-   breiter schöbe die Nachbarkarten unter die Pfeile. */
+/* 580 breit, nachgemessen: Bei 560 brachen die langen Stichpunkte
+   zweizeilig um. Noch breiter schöbe die Nebenfotos unter die Pfeile.
+   Das Foto ist drei Fünftel von 640 hoch (384 px); der Textteil wächst mit
+   seinem Inhalt, beim Fassadenbau auf höchstens 245 px. */
 .karussell {
   --karte-b: 580px;
   --karte-h: 640px;
+  --bild-h: calc(var(--karte-h) * .6);
   position: relative;
 }
 .karussell__steuerung { display: none; }
@@ -762,7 +763,6 @@ p:last-child { margin-bottom: 0; }
 .karussell.is-an .cards {
   grid-template-columns: 1fr;
   justify-items: center;
-  perspective: 1200px;
   /* Senkrecht scrollt der Browser, waagerechtes Wischen kommt bei main.js an. */
   touch-action: pan-y;
 }
@@ -770,26 +770,57 @@ p:last-child { margin-bottom: 0; }
   --pos: 0;
   --groesse: 1;
   --deckkraft: 1;
-  --unschaerfe: 0px;
   grid-area: 1 / 1;
+  /* Jede Karte ist so hoch wie ihr Text und hängt oben. Bis 14.09.2026 waren
+     alle gleich hoch, und unter kürzeren Texten blieb leeres Weiß stehen —
+     am Handy 75 px beim Trockenbau. */
+  align-self: start;
   width: min(var(--karte-b), 100%);
-  height: var(--karte-h);
-  display: grid;
-  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
   z-index: 3;
   opacity: var(--deckkraft);
-  filter: blur(var(--unschaerfe));
-  transform: translateX(calc(var(--pos) * 45%)) scale(var(--groesse)) rotateY(calc(var(--pos) * -10deg));
-  transition: transform .5s ease, opacity .5s ease, filter .5s ease, box-shadow .5s ease;
+  box-shadow: var(--shadow-m);
+  /* Verkleinert wird um die Fotomitte: So stehen die Nebenfotos mittig
+     neben dem Hauptfoto statt versetzt darüber oder darunter. */
+  transform-origin: 50% calc(var(--bild-h) / 2);
+  transform: translateX(calc(var(--pos) * 45%)) scale(var(--groesse));
+  transition: transform .5s ease, opacity .5s ease, background-color .3s ease, border-color .3s ease, box-shadow .5s ease;
 }
+/* Von den Nachbarn bleibt nur das unscharfe Foto. Bis 14.09.2026 war die
+   ganze Karte unscharf und durchsichtig: Überschrift und Stichpunkte wurden
+   zu grauen Schlieren in einem milchigen Kasten, am Handy genau am Bildrand.
+   Bilal fand das Karussell „unclean". */
 .karussell.is-an .card[data-pos="-1"],
 .karussell.is-an .card[data-pos="1"] {
   --groesse: .85;
-  --deckkraft: .4;
-  --unschaerfe: 4px;
+  --deckkraft: .6;
   z-index: 2;
+  background-color: transparent;
+  border-color: transparent;
   box-shadow: none;
+  /* Anklickbar ist nur das Foto, nicht der unsichtbare Text darunter. */
+  pointer-events: none;
+}
+.karussell.is-an .card[data-pos="-1"] .card__bild,
+.karussell.is-an .card[data-pos="1"] .card__bild {
+  border-radius: var(--r);
+  pointer-events: auto;
   cursor: pointer;
+}
+/* Leicht vergrößert, sonst zieht die Unschärfe am Rand einen hellen Saum. */
+.karussell.is-an .card[data-pos="-1"] .card__bild img,
+.karussell.is-an .card[data-pos="1"] .card__bild img {
+  filter: blur(3px);
+  transform: scale(1.08);
+}
+/* Beim Weiterdrehen verschwindet der alte Text schnell, der neue kommt erst,
+   wenn seine Karte fast in der Mitte ist. So liegen nie zwei Texte
+   übereinander (an Zwischenbildern bei 80, 200 und 350 ms geprüft). */
+.karussell.is-an .card[data-pos="-1"] .card__in,
+.karussell.is-an .card[data-pos="1"] .card__in,
+.karussell.is-an .card[data-pos="-1"] .card__hinweis,
+.karussell.is-an .card[data-pos="1"] .card__hinweis {
+  opacity: 0;
+  transition: opacity .12s ease;
 }
 .karussell.is-an .card[data-pos="-1"] { --pos: -1; }
 .karussell.is-an .card[data-pos="1"]  { --pos: 1; }
@@ -804,20 +835,25 @@ p:last-child { margin-bottom: 0; }
 .karussell.is-an .card[data-pos="-2"] { --pos: -2; }
 .karussell.is-an .card[data-pos="2"]  { --pos: 2; }
 
-.karussell.is-an .card__bild { aspect-ratio: auto; }
-.karussell.is-an .card__in {
-  overflow: hidden;
-  padding: 1.2rem 1.6rem 1.3rem;
+.karussell.is-an .card__bild {
+  aspect-ratio: auto;
+  height: var(--bild-h);
+  transition: border-radius .5s ease;
 }
+.karussell.is-an .card__bild img { transition: transform .7s cubic-bezier(.2, .7, .3, 1), filter .5s ease; }
+.karussell.is-an .card__in,
+.karussell.is-an .card__hinweis { transition: opacity .3s ease .2s; }
+.karussell.is-an .card__in { padding: 1.2rem 1.6rem 1.3rem; }
 .karussell.is-an .card h3 { margin-bottom: .25em; }
-.karussell.is-an .card__in > p { margin: 0; }
+/* „pretty" hält das letzte Wort nicht allein in der Zeile („abgezogen."). */
+.karussell.is-an .card__in > p { margin: 0; text-wrap: pretty; }
 .karussell.is-an .ticks {
   grid-template-columns: 1fr 1fr;
   column-gap: 1.4rem;
   row-gap: .3rem;
   margin-top: .8rem;
 }
-.karussell.is-an .ticks li { font-size: .88rem; line-height: 1.4; }
+.karussell.is-an .ticks li { font-size: .88rem; line-height: 1.4; text-wrap: pretty; }
 
 .karussell.is-an .karussell__steuerung {
   display: flex;
@@ -864,15 +900,14 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* Am großen Bildschirm sitzen die Pfeile wie in der Vorlage links und
-   rechts auf halber Kartenhöhe; die Zählung braucht es dort nicht. */
+   rechts, auf Höhe der Fotomitte; die Zählung braucht es dort nicht. */
 @media (min-width: 941px) {
   .karussell.is-an .karussell__steuerung {
     position: absolute;
-    /* Etwas nach außen: Durch die Drehung ragen die Nachbarkarten sonst
-       16 px unter die Pfeile. */
+    /* Etwas nach außen, damit die Nebenfotos nicht unter die Pfeile ragen. */
     left: -1.5rem;
     right: -1.5rem;
-    top: calc(var(--karte-h) / 2);
+    top: calc(var(--bild-h) / 2);
     transform: translateY(-50%);
     justify-content: space-between;
     margin: 0;
@@ -882,35 +917,34 @@ p:last-child { margin-bottom: 0; }
   .karussell.is-an .karussell__stand { display: none; }
 }
 
-/* Bis 700 statt 640: Darunter ist die Karte schmaler als 580, und der Text
-   passte nicht mehr in zwei Fünftel. */
+/* Bis 700 statt 640: Darunter ist die Karte schmaler als 580, und die
+   Stichpunkte passen nicht mehr zweispaltig. */
 @media (max-width: 700px) {
-  /* 80 % breit: So ragen links und rechts die unscharfen Nachbarkarten ins
+  /* 80 % breit: So ragen links und rechts die unscharfen Nebenfotos ins
      Bild wie am PC (Bilal, 13.09.2026). Vorher war die Karte voll breit und
      die Nachbarn ausgeblendet. */
-  .karussell.is-an .card {
-    width: min(var(--karte-b), 80cqw);
-    height: auto;
-    grid-template-rows: auto 1fr;
-  }
-  /* 16:9 statt 4:3 und etwas engerer Text: Mit 4:3 war die Karte am iPhone
-     höher als der sichtbare Bereich, Pfeile und Zählung lagen unter der
-     Anrufleiste (Bilal, 13.09.2026). */
-  .karussell.is-an .card__bild { aspect-ratio: 16 / 9; }
+  .karussell.is-an .card { width: min(var(--karte-b), 80cqw); }
   .karussell.is-an .card__in { padding: 1rem 1.15rem 1.1rem; }
   .karussell.is-an .card__in > p { font-size: .9rem; }
   .karussell.is-an .ticks { grid-template-columns: 1fr; row-gap: .15rem; margin-top: .6rem; }
   .karussell.is-an .ticks li { font-size: .86rem; }
 
-  /* Pfeile und Zählung liegen am Handy als kleine Leiste unten rechts im
+  /* Foto 16:9 statt 4:3: Mit 4:3 war die Karte am iPhone höher als der
+     sichtbare Bereich, Pfeile und Zählung lagen unter der Anrufleiste
+     (Bilal, 13.09.2026). Die Höhe wird aus der Kartenbreite gerechnet
+     (cqw = Breite des Karussells).
+
+     Pfeile und Zählung liegen am Handy als kleine Leiste unten rechts im
      Bild statt unter der Karte — so passt die Karte samt Bedienung auf den
-     Bildschirm. Die Lage wird aus der Kartenbreite gerechnet (cqw = Breite
-     des Karussells): Bildhöhe = Kartenbreite x 9/16. */
-  .karussell { container-type: inline-size; }
+     Bildschirm. */
+  .karussell {
+    container-type: inline-size;
+    --bild-h: calc(min(var(--karte-b), 80cqw) * 9 / 16);
+  }
   .karussell.is-an .karussell__steuerung {
     position: absolute;
     z-index: 5;
-    top: calc(min(var(--karte-b), 80cqw) * 9 / 16 - 44px - .6rem);
+    top: calc(var(--bild-h) - 44px - .6rem);
     right: calc((100cqw - min(var(--karte-b), 80cqw)) / 2 + .6rem);
     margin: 0;
     gap: 0;
@@ -1447,15 +1481,18 @@ p:last-child { margin-bottom: 0; }
   .reveal { opacity: 1 !important; transform: none !important; }
   /* Auf Papier dreht sich nichts: die drei Leistungen nebeneinander. */
   .karussell.is-an .cards { grid-template-columns: repeat(3, 1fr); }
-  .karussell.is-an .card {
+  .karussell.is-an .card[data-pos] {
     grid-area: auto;
     width: auto;
-    height: auto;
     transform: none;
     opacity: 1;
-    filter: none;
     visibility: visible;
+    background-color: #fff;
   }
+  .karussell.is-an .card[data-pos] .card__bild { height: auto; aspect-ratio: 4 / 3; }
+  .karussell.is-an .card[data-pos] .card__bild img { filter: none; transform: none; }
+  .karussell.is-an .card[data-pos] .card__in,
+  .karussell.is-an .card[data-pos] .card__hinweis { opacity: 1; }
   .karussell__steuerung { display: none !important; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
 }
