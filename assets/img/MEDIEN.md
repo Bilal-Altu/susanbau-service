@@ -64,10 +64,17 @@ Liegen in `../video/`.
 
 **Der Film am großen Bildschirm ist stabilisiert**, als stünde die Kamera auf einem Stativ. Das
 iPhone hatte schon selbst ruhig gehalten — nachgemessen springt das Bild von Einzelbild zu
-Einzelbild kaum. Übrig war ein langsames Abdriften über mehrere Sekunden, und das machte die
-Nahtstelle der Schleife unsauber, weil Anfang und Ende gegeneinander verschoben lagen. Der
-Stativ-Modus nimmt das heraus: 70 % weniger Schwanken, die Naht 61 % sauberer. Dafür wird
-das Bild um wenige Prozent enger beschnitten.
+Einzelbild kaum. Übrig war ein langsames Abdriften und zwischen 3 und 5 s ein Kippen der
+Kamera um rund 60 px. Ohne Ausgleich lägen Anfang und Ende der Schleife gegeneinander
+verschoben.
+
+Bis zum 14.09.2026 hat das der Stativ-Modus von vidstab erledigt. Der schätzt aber jedes Bild
+neu und zitterte dabei selbst: am oberen Rand bis 0,56 px von Bild zu Bild, das Original hat
+0,03. In Chrome sah das wie ein Wackeln am oberen Rand ab der Mitte aus. Jetzt wird die
+Bewegung der Fassade einmal gemessen (`werkzeug/pfad-messen.sh`), zu einer glatten Kurve
+ausgeglichen und das Bild genau entlang dieser Kurve verschoben. Ergebnis: 0,01 bis 0,06 px
+von Bild zu Bild, so ruhig wie das Original, und die Naht liegt weiterhin deckungsgleich.
+Dafür wird das Bild um gut 5 % enger beschnitten.
 
 **Er liegt in 2560 × 1440 vor, rund 6 MB.** Die erste Fassung hatte 1600 × 900 und 1,6 MB
 und sah am PC verpixelt aus: Der Hero füllt den ganzen Bildschirm, und auf einem großen
