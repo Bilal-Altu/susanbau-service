@@ -46,8 +46,7 @@
       } else {
         burger.setAttribute("aria-expanded", "true");
         burger.setAttribute("aria-label", "Menü schließen");
-        // Die Menüpunkte beginnen unter der Kopfleiste. Oben auf der Startseite
-        // steht darüber noch die oberste Zeile, nach dem Scrollen nicht mehr.
+        // Die Menüpunkte beginnen unter der Kopfleiste.
         var kopf = document.getElementById("header");
         if (kopf) nav.style.setProperty("--kopf-unten", Math.max(0, Math.round(kopf.getBoundingClientRect().bottom)) + "px");
         nav.classList.add("is-open");
@@ -67,12 +66,7 @@
   /* ---------- Kopfbereich: Schatten beim Scrollen ---------- */
   var header = document.getElementById("header");
   function onScroll() {
-    var gescrollt = window.scrollY > 12;
-    if (header) header.classList.toggle("is-stuck", gescrollt);
-    // Auch am <body>: Die obere Zeile liegt außerhalb der Kopfleiste und soll
-    // mit ihr zusammen hell werden. Sonst stand der helle Streifen beim
-    // Anscrollen zwischen Video oben und Video unten.
-    document.body.classList.toggle("is-gescrollt", gescrollt);
+    if (header) header.classList.toggle("is-stuck", window.scrollY > 12);
   }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -82,11 +76,9 @@
      bis unter die Kopfleiste durchläuft. Gemessen statt geschätzt, weil die
      Leiste je nach Schriftgröße, Zoomstufe und Browser unterschiedlich hoch
      ausfällt. Ohne JavaScript greift der Ersatzwert aus dem Stylesheet. */
-  var topbar = document.querySelector(".topbar");
   function messeKopf() {
     if (!header) return;
-    var hoehe = header.offsetHeight + (topbar ? topbar.offsetHeight : 0);
-    document.documentElement.style.setProperty("--kopf-h", hoehe + "px");
+    document.documentElement.style.setProperty("--kopf-h", header.offsetHeight + "px");
   }
   messeKopf();
   window.addEventListener("resize", messeKopf);

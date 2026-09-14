@@ -227,48 +227,6 @@ p:last-child { margin-bottom: 0; }
 .btn--block { width: 100%; }
 
 /* ---------------------------------------------------------
-   Topbar
-   --------------------------------------------------------- */
-.topbar {
-  background-color: var(--ink);
-  background-image: var(--grain-dark);
-  color: var(--muted-dark);
-  font-size: .84rem;
-}
-.topbar__in {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  min-height: 40px;
-  padding-block: .35rem;
-}
-.topbar__item { display: inline-flex; align-items: center; gap: .4rem; }
-.topbar__sep { opacity: .45; }
-.topbar__spacer { flex: 1; }
-.topbar__tel {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  /* 44px, damit die Nummer auch am Handy ein sauberes Tippziel ist —
-     als Textzeile war sie nur 21px hoch. */
-  min-height: 44px;
-  padding-left: .3rem;
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.topbar__tel:hover { color: var(--clay-lite); }
-
-@media (max-width: 860px) {
-  .topbar__item--hide { display: none; }
-}
-@media (max-width: 520px) {
-  .topbar { font-size: .78rem; }
-  .topbar__sep { display: none; }
-}
-
-/* ---------------------------------------------------------
    Kopfbereich
    --------------------------------------------------------- */
 .site-header {
@@ -383,8 +341,7 @@ p:last-child { margin-bottom: 0; }
     align-items: stretch;
     gap: 0;
     background: var(--paper);
-    /* Beginnt unter der Kopfleiste. main.js misst beim Öffnen, wo sie endet —
-       oben auf der Startseite steht noch die oberste Zeile darüber. */
+    /* Beginnt unter der Kopfleiste; main.js misst beim Öffnen, wo sie endet. */
     padding: calc(var(--kopf-unten, 4.7rem) + .8rem) var(--pad-x) 2rem;
     height: 100dvh;
     overflow-y: auto;
@@ -400,11 +357,10 @@ p:last-child { margin-bottom: 0; }
     z-index: 55;
   }
   .nav.is-open { transform: none; visibility: visible; }
-  /* Logo und Schließen-X liegen über dem Menü, die oberste Zeile ebenfalls —
-     sonst deckt das Menü sie zu und nichts lässt sich mehr antippen. */
+  /* Logo und Schließen-X liegen über dem Menü — sonst deckt das Menü sie zu
+     und nichts lässt sich mehr antippen. */
   .brand,
   .burger { position: relative; z-index: 56; }
-  body.nav-open .topbar { position: relative; z-index: 61; }
   .nav a {
     font-family: var(--font-head);
     font-size: 1.35rem;
@@ -449,8 +405,8 @@ p:last-child { margin-bottom: 0; }
      Adressleiste ein- oder ausfährt. Der Hero würde bei jedem Scrollen
      um 60 Pixel springen. */
   min-height: 100svh;
-  margin-top: calc(-1 * var(--kopf-h, 125px));
-  padding-top: calc(var(--kopf-h, 125px) + 2rem);
+  margin-top: calc(-1 * var(--kopf-h, 75px));
+  padding-top: calc(var(--kopf-h, 75px) + 2rem);
   padding-bottom: clamp(2.5rem, 1rem + 5vw, 5.5rem);
   background: var(--schwarz);
   color: #fff;
@@ -549,33 +505,11 @@ p:last-child { margin-bottom: 0; }
 .trust strong { font-family: var(--font-head); font-size: 1.02rem; letter-spacing: -.01em; }
 .trust span { color: var(--muted); font-size: .88rem; line-height: 1.45; }
 
-/* Kopfleiste über dem Video: durchsichtig, bis gescrollt wird.
-   Die obere Zeile braucht dabei eine eigene Ebene — der Hero zieht sich
-   über sie und würde sie sonst einfach zudecken. Der Kopfbereich darunter
-   hat mit z-index 60 schon eine.
-
-   Alles nur, solange das Handy-Menü zu ist (:not(.nav-open)). Das Menü hat
-   einen hellen Grund; mit diesen Regeln standen Menüpunkte, Logo, das
-   Schließen-X und die obere Zeile weiß auf hell und waren nicht zu sehen.
-   Offen sieht die Kopfleiste deshalb aus wie auf Impressum und Datenschutz. */
-.hat-hero:not(.nav-open) .topbar {
-  position: relative;
-  z-index: 61;
-  background-color: transparent;
-  background-image: none;
-  color: rgba(255, 255, 255, .82);
-}
-/* Beim Scrollen wird die obere Zeile zusammen mit der Kopfleiste hell, im
-   selben Ton. Vorher wurde nur die Kopfleiste hell, während die obere Zeile
-   noch durchsichtig über dem Video stand — ein heller Streifen, über und
-   unter ihm Video. Die Zeile scrollt danach wie bisher weg. */
-.hat-hero.is-gescrollt:not(.nav-open) .topbar {
-  background-color: rgba(244, 243, 240, .92);
-  backdrop-filter: saturate(1.4) blur(10px);
-  color: var(--muted);
-}
-.hat-hero.is-gescrollt:not(.nav-open) .topbar__tel { color: var(--ink); }
-.hat-hero.is-gescrollt:not(.nav-open) .topbar__tel:hover { color: var(--clay-dark); }
+/* Kopfleiste über dem Video: durchsichtig, bis gescrollt wird. Nur solange
+   das Handy-Menü zu ist (:not(.nav-open)) — das Menü hat einen hellen Grund,
+   mit diesen Regeln standen Menüpunkte, Logo und Schließen-X sonst weiß auf
+   hell. Die oberste Zeile mit Ort und Telefon gibt es seit 14.09.2026 nicht
+   mehr (sie stand nur auf der Startseite). */
 .hat-hero:not(.nav-open) .site-header:not(.is-stuck) { color: #fff; }
 .hat-hero:not(.nav-open) .site-header:not(.is-stuck)::before {
   background: transparent;
