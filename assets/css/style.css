@@ -275,10 +275,21 @@ p:last-child { margin-bottom: 0; }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(244, 243, 240, .92);
-  backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
+}
+/* Hintergrund und Unschärfe liegen auf einer eigenen Ebene statt auf der
+   Kopfleiste selbst: backdrop-filter macht ein Element zum Bezugsrahmen für
+   position: fixed. Das Handy-Menü hing sonst an der Kopfleiste statt am
+   Bildschirm, deckte Logo und Schließen-X zu und ließ sich nicht mehr
+   schließen (Bilal, 14.09.2026). */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(244, 243, 240, .92);
+  backdrop-filter: saturate(1.4) blur(10px);
 }
 .site-header.is-stuck {
   border-bottom-color: var(--line);
@@ -372,7 +383,9 @@ p:last-child { margin-bottom: 0; }
     align-items: stretch;
     gap: 0;
     background: var(--paper);
-    padding: 5.5rem var(--pad-x) 2rem;
+    /* Beginnt unter der Kopfleiste. main.js misst beim Öffnen, wo sie endet —
+       oben auf der Startseite steht noch die oberste Zeile darüber. */
+    padding: calc(var(--kopf-unten, 4.7rem) + .8rem) var(--pad-x) 2rem;
     height: 100dvh;
     overflow-y: auto;
     transform: translateY(-101%);
@@ -387,6 +400,11 @@ p:last-child { margin-bottom: 0; }
     z-index: 55;
   }
   .nav.is-open { transform: none; visibility: visible; }
+  /* Logo und Schließen-X liegen über dem Menü, die oberste Zeile ebenfalls —
+     sonst deckt das Menü sie zu und nichts lässt sich mehr antippen. */
+  .brand,
+  .burger { position: relative; z-index: 56; }
+  body.nav-open .topbar { position: relative; z-index: 61; }
   .nav a {
     font-family: var(--font-head);
     font-size: 1.35rem;
@@ -558,10 +576,10 @@ p:last-child { margin-bottom: 0; }
 }
 .hat-hero.is-gescrollt:not(.nav-open) .topbar__tel { color: var(--ink); }
 .hat-hero.is-gescrollt:not(.nav-open) .topbar__tel:hover { color: var(--clay-dark); }
-.hat-hero:not(.nav-open) .site-header:not(.is-stuck) {
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck) { color: #fff; }
+.hat-hero:not(.nav-open) .site-header:not(.is-stuck)::before {
   background: transparent;
   backdrop-filter: none;
-  color: #fff;
 }
 .hat-hero:not(.nav-open) .site-header:not(.is-stuck) .nav > a { color: #fff; }
 /* Das gesperrte SERVICE unter der Wortmarke steht sonst in Terrakotta auf

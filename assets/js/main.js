@@ -46,6 +46,10 @@
       } else {
         burger.setAttribute("aria-expanded", "true");
         burger.setAttribute("aria-label", "Menü schließen");
+        // Die Menüpunkte beginnen unter der Kopfleiste. Oben auf der Startseite
+        // steht darüber noch die oberste Zeile, nach dem Scrollen nicht mehr.
+        var kopf = document.getElementById("header");
+        if (kopf) nav.style.setProperty("--kopf-unten", Math.max(0, Math.round(kopf.getBoundingClientRect().bottom)) + "px");
         nav.classList.add("is-open");
         document.body.classList.add("nav-open");
       }
