@@ -638,7 +638,6 @@ p:last-child { margin-bottom: 0; }
    wirkt. Ohne das läge zwischen beiden noch ein Inline-Element, das unten
    eine Lücke von ein paar Pixeln erzeugt. */
 .media picture,
-.film picture,
 .card__bild picture { display: contents; }
 .media img { width: 100%; height: 100%; object-fit: cover; }
 .media--tall { aspect-ratio: 3 / 4; }
@@ -1037,30 +1036,39 @@ p:last-child { margin-bottom: 0; }
    über die volle Breite, darunter drei Aufnahmen davon. Sechs Kacheln
    so zu beschriften, als wären es sechs Aufträge, wäre gelogen.
    --------------------------------------------------------- */
-.film {
+/* Kleine Galerie der aktuellen Baustelle: vier quadratische Kacheln mit
+   runden Ecken, am PC in einer Reihe, am Handy zwei mal zwei. Vorher standen
+   hier ein großer Film und drei hohe Fotos — Bilal: „zu groß alles". */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(.6rem, 1.2vw, 1rem);
+}
+.kachel {
   position: relative;
-  margin: 0 0 clamp(.8rem, 1.6vw, 1.3rem);
-  aspect-ratio: 16 / 9;
+  margin: 0;
+  aspect-ratio: 1;
   overflow: hidden;
-  border-radius: var(--r);
+  border-radius: 18px;
   background: var(--schwarz);
 }
-.film video,
-.film img {
+.kachel picture { display: contents; }
+.kachel img,
+.kachel video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-.film video { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
-.film video.is-da { opacity: 1; }
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(.8rem, 1.6vw, 1.3rem);
+.kachel video { opacity: 0; transition: opacity .9s ease; }
+.kachel video.is-da { opacity: 1; }
+@media (max-width: 640px) {
+  .kacheln { grid-template-columns: 1fr 1fr; }
+  .kachel { border-radius: 14px; }
 }
-.gallery .media { aspect-ratio: 3 / 4; }
+
 
 /* Harte Fakten zum Projekt. Steht bewusst unter den Bildern und nicht
    darüber: Erst sieht man die Arbeit, dann liest man die Eckdaten. */
@@ -1094,13 +1102,6 @@ p:last-child { margin-bottom: 0; }
   font-size: .92rem;
 }
 .section--paper2 .hint { background: rgba(255, 255, 255, .6); }
-
-@media (max-width: 860px) {
-  .gallery { grid-template-columns: 1fr 1fr; }
-  /* Drei Hochformate in zwei Spalten lassen unten eine Lücke. Das letzte
-     Bild nimmt deshalb die ganze Breite und wird dafür quer beschnitten. */
-  .gallery .media:last-child { grid-column: span 2; aspect-ratio: 16 / 10; }
-}
 
 /* ---------------------------------------------------------
    Über uns

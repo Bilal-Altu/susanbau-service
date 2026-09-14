@@ -27,17 +27,19 @@ Alles steht auf einer einzigen Seite, die Menüpunkte springen nur an die richti
 1. **Oben** — Was wir machen, Telefonnummer, zwei Knöpfe
 2. **Leistungen** — Fassadenbau, Verputzarbeiten, Trockenbau
 3. **Ablauf** — vier Schritte vom Anruf bis zur Übergabe
-4. **Aktuelle Baustelle** — Fotos und Film vom Mehrfamilienhaus in Bürstadt
+4. **Aktuelle Baustelle** — vier kleine Kacheln (drei kurze Filme, ein Foto) vom Mehrfamilienhaus in Bürstadt
 5. **Über uns** — Betrieb und Einsatzgebiet
 6. **Fragen** — die sechs häufigsten Fragen
 7. **Kontakt** — Anfrageformular und alle Kontaktwege
 
 Dazu **Impressum** und **Datenschutzerklärung** als eigene Seiten.
 
-## Die Fotos und der Film
+## Die Fotos und Filme
 
 Alles, was auf der Seite zu sehen ist, stammt von **einer** Baustelle: dem Mehrfamilienhaus
-in Bürstadt, aufgenommen am 10. und 12. September 2026. Kein einziges gekauftes Bild.
+in Bürstadt, aufgenommen am 10. und 12. September 2026. Einzige Ausnahme ist die Karte
+„Trockenbau": Davon gibt es noch keine eigene Aufnahme, dort steht ein freies Foto von
+Unsplash, im Bild sichtbar als „Symbolbild" gekennzeichnet.
 
 Deshalb heißt der Abschnitt auch „Aktuelle Baustelle" und nicht „Referenzen". Es ist ein
 Auftrag, und so wird er gezeigt. Sechs Kacheln so zu beschriften, als wären es sechs
@@ -49,11 +51,14 @@ dem Team auf dem Gerüst. Er ist digital stabilisiert, als stünde die Kamera au
 Stativ. Dadurch liegen Ende und Anfang deckungsgleich übereinander, und die Schleife
 beginnt ohne sichtbaren Sprung von vorn.
 
-**Am Handy** läuft eine Aufnahme vom Balkon gegenüber: das ganze Haus mit Gerüst im
-Abendlicht. Sie ist aus der Hand gefilmt und deshalb beruhigt. Gemessen wird die Bewegung
-nur am Haus, nicht am Balkongeländer im Vordergrund, dann wird das Bild so verschoben, dass
-das Haus stillsteht. Der Ausschnitt ist so gelegt, dass weder das Geländer noch der
-Dachüberstand noch das Banner der Gerüstbaufirma zu sehen sind.
+**Am Handy** läuft eine Nahaufnahme: Der Verputzer lehnt aus dem Gerüst und zieht den Putz
+ab. Der Hero-Text ist dort bewusst kurz — nur Überschrift und Telefon-Knopf —, damit die
+obere Hälfte des Films frei bleibt, und genau da liegen Gesicht und Kelle.
+
+**Im Abschnitt „Aktuelle Baustelle"** stehen vier kleine, quadratische Kacheln mit runden
+Ecken: drei kurze Filme und ein Foto. Die Filme laufen erst an, wenn man in die Nähe
+scrollt. Wo eine Aufnahme wackelte, ist sie beruhigt oder auf ein ruhiges Stück gekürzt;
+das Banner der Gerüstbaufirma ist nirgends zu sehen.
 
 **Farben.** Das iPhone filmt in HDR. Ohne Umrechnung wirken solche Filme im Browser grau
 und flau — so sah die erste Fassung aus. Das Build-Skript rechnet sie jetzt auf normale

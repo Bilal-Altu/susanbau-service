@@ -46,7 +46,7 @@
      impressum.html und datenschutz.html. Sonst bekommen wiederkehrende
      Besucher neues HTML mit altem Stylesheet: ALL-INKL speichert CSS und JS
      laut .htaccess einen Monat zwischen, GitHub Pages zehn Minuten. -->
-<link rel="stylesheet" href="assets/css/style.css?v=2026-09-13-6" />
+<link rel="stylesheet" href="assets/css/style.css?v=2026-09-13-7" />
 
 <script>
   /* Sicherheitsnetz: Sollte ein Bild fehlen oder nicht laden, zeigt der
@@ -397,86 +397,63 @@
       </p>
     </header>
 
-    <figure class="film reveal">
-      <picture>
-        <source type="image/avif" srcset="assets/video/baustelle.avif" />
-        <source type="image/webp" srcset="assets/video/baustelle.webp" />
-        <img src="assets/video/baustelle.jpg"
-             alt="Vier Handwerker verputzen die eingerüstete Fassade eines Mehrfamilienhauses"
-             width="1280" height="720" loading="lazy" decoding="async" />
-      </picture>
-      <video muted loop playsinline preload="none" aria-hidden="true"
-             data-film="assets/video/baustelle.mp4"></video>
-    </figure>
-
-    <div class="gallery reveal">
-      <figure class="media">
+    <!-- Kleine Galerie: drei kurze Filme und ein Foto, alle quadratisch.
+         Die Filme starten erst, wenn der Abschnitt in die Nähe kommt
+         (data-film, siehe main.js). Die Dateien baut medien-bauen.sh. -->
+    <div class="kacheln reveal">
+      <figure class="kachel">
+        <picture>
+          <source type="image/avif" srcset="assets/video/kachel-geruest-team.avif" />
+          <source type="image/webp" srcset="assets/video/kachel-geruest-team.webp" />
+          <img src="assets/video/kachel-geruest-team.jpg"
+               alt="Drei Handwerker verputzen die Fassade, einer oben auf dem Gerüstbrett, zwei davor"
+               width="600" height="600" loading="lazy" decoding="async" />
+        </picture>
+        <video muted loop playsinline preload="none" aria-hidden="true"
+               data-film="assets/video/kachel-geruest-team.mp4"></video>
+      </figure>
+      <figure class="kachel">
         <picture>
           <source type="image/avif"
-                  srcset="assets/img/04-team-geruest-fassade-480.avif 480w,
-                          assets/img/04-team-geruest-fassade-960.avif 960w,
-                          assets/img/04-team-geruest-fassade-1440.avif 1440w"
-                  sizes="(min-width: 861px) 380px, 50vw" />
+                  srcset="assets/img/04-kachel-verputzer-kelle-360.avif 360w,
+                          assets/img/04-kachel-verputzer-kelle-600.avif 600w,
+                          assets/img/04-kachel-verputzer-kelle-900.avif 900w"
+                  sizes="(min-width: 641px) 270px, 45vw" />
           <source type="image/webp"
-                  srcset="assets/img/04-team-geruest-fassade-480.webp 480w,
-                          assets/img/04-team-geruest-fassade-960.webp 960w,
-                          assets/img/04-team-geruest-fassade-1440.webp 1440w"
-                  sizes="(min-width: 861px) 380px, 50vw" />
-          <img src="assets/img/04-team-geruest-fassade-960.jpg"
-               srcset="assets/img/04-team-geruest-fassade-480.jpg 480w,
-                       assets/img/04-team-geruest-fassade-960.jpg 960w,
-                       assets/img/04-team-geruest-fassade-1440.jpg 1440w"
-               sizes="(min-width: 861px) 380px, 50vw"
-               alt="Vier Handwerker arbeiten gleichzeitig auf drei Gerüstlagen an der Fassade"
-               width="480" height="640" loading="lazy" decoding="async"
-               onerror="window.phFail(this)" />
+                  srcset="assets/img/04-kachel-verputzer-kelle-360.webp 360w,
+                          assets/img/04-kachel-verputzer-kelle-600.webp 600w,
+                          assets/img/04-kachel-verputzer-kelle-900.webp 900w"
+                  sizes="(min-width: 641px) 270px, 45vw" />
+          <img src="assets/img/04-kachel-verputzer-kelle-600.jpg"
+               srcset="assets/img/04-kachel-verputzer-kelle-360.jpg 360w,
+                       assets/img/04-kachel-verputzer-kelle-600.jpg 600w,
+                       assets/img/04-kachel-verputzer-kelle-900.jpg 900w"
+               sizes="(min-width: 641px) 270px, 45vw"
+               alt="Verputzer zieht mit der Kelle frischen Putz an der Außenwand ab"
+               width="600" height="600" loading="lazy" decoding="async" />
         </picture>
       </figure>
-
-      <figure class="media">
+      <figure class="kachel">
         <picture>
-          <source type="image/avif"
-                  srcset="assets/img/05-arbeiter-geruest-untersicht-480.avif 480w,
-                          assets/img/05-arbeiter-geruest-untersicht-960.avif 960w,
-                          assets/img/05-arbeiter-geruest-untersicht-1440.avif 1440w"
-                  sizes="(min-width: 861px) 380px, 50vw" />
-          <source type="image/webp"
-                  srcset="assets/img/05-arbeiter-geruest-untersicht-480.webp 480w,
-                          assets/img/05-arbeiter-geruest-untersicht-960.webp 960w,
-                          assets/img/05-arbeiter-geruest-untersicht-1440.webp 1440w"
-                  sizes="(min-width: 861px) 380px, 50vw" />
-          <img src="assets/img/05-arbeiter-geruest-untersicht-960.jpg"
-               srcset="assets/img/05-arbeiter-geruest-untersicht-480.jpg 480w,
-                       assets/img/05-arbeiter-geruest-untersicht-960.jpg 960w,
-                       assets/img/05-arbeiter-geruest-untersicht-1440.jpg 1440w"
-               sizes="(min-width: 861px) 380px, 50vw"
-               alt="Blick vom Gerüst nach oben auf einen Handwerker beim Abziehen der Wand"
-               width="480" height="640" loading="lazy" decoding="async"
-               onerror="window.phFail(this)" />
+          <source type="image/avif" srcset="assets/video/kachel-haus-geruest.avif" />
+          <source type="image/webp" srcset="assets/video/kachel-haus-geruest.webp" />
+          <img src="assets/video/kachel-haus-geruest.jpg"
+               alt="Eingerüstetes Mehrfamilienhaus in Bürstadt im Abendlicht, Handwerker auf dem Gerüst"
+               width="600" height="600" loading="lazy" decoding="async" />
         </picture>
+        <video muted loop playsinline preload="none" aria-hidden="true"
+               data-film="assets/video/kachel-haus-geruest.mp4"></video>
       </figure>
-
-      <figure class="media">
+      <figure class="kachel">
         <picture>
-          <source type="image/avif"
-                  srcset="assets/img/06-team-geruest-quer-480.avif 480w,
-                          assets/img/06-team-geruest-quer-960.avif 960w,
-                          assets/img/06-team-geruest-quer-1440.avif 1440w"
-                  sizes="(min-width: 861px) 380px, 100vw" />
-          <source type="image/webp"
-                  srcset="assets/img/06-team-geruest-quer-480.webp 480w,
-                          assets/img/06-team-geruest-quer-960.webp 960w,
-                          assets/img/06-team-geruest-quer-1440.webp 1440w"
-                  sizes="(min-width: 861px) 380px, 100vw" />
-          <img src="assets/img/06-team-geruest-quer-960.jpg"
-               srcset="assets/img/06-team-geruest-quer-480.jpg 480w,
-                       assets/img/06-team-geruest-quer-960.jpg 960w,
-                       assets/img/06-team-geruest-quer-1440.jpg 1440w"
-               sizes="(min-width: 861px) 380px, 100vw"
-               alt="Zwei Handwerker verputzen nebeneinander die Wand über dem Fenstersturz"
-               width="480" height="360" loading="lazy" decoding="async"
-               onerror="window.phFail(this)" />
+          <source type="image/avif" srcset="assets/video/kachel-fassade-arbeiter.avif" />
+          <source type="image/webp" srcset="assets/video/kachel-fassade-arbeiter.webp" />
+          <img src="assets/video/kachel-fassade-arbeiter.jpg"
+               alt="Handwerker arbeiten auf zwei Gerüstlagen an der weißen Fassade"
+               width="600" height="600" loading="lazy" decoding="async" />
         </picture>
+        <video muted loop playsinline preload="none" aria-hidden="true"
+               data-film="assets/video/kachel-fassade-arbeiter.mp4"></video>
       </figure>
     </div>
 
@@ -797,7 +774,7 @@
   </a>
 </nav>
 
-<script src="assets/js/main.js?v=2026-09-13-6"></script>
+<script src="assets/js/main.js?v=2026-09-13-7"></script>
 
 <!-- ============ STRUKTURIERTE DATEN ============ -->
 <!-- Bewusst OHNE aggregateRating, foundingDate und openingHours: Diese Angaben

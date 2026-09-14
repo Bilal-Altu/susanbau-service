@@ -27,9 +27,7 @@ in den erzeugten Dateien steckt nachweislich keine Ortsangabe mehr.
 | `01-fassade-geruest-buerstadt-*` | IMG_8008 | Eingerüstete Fassade, blauer Himmel — Karte „Fassadenbau" |
 | `02-verputzer-kelle-detail-*` | IMG_8023 | Verputzer mit der Kelle an der Wand — Karte „Verputzarbeiten" |
 | `03-trockenbau-symbolbild-gipskarton-*` | Unsplash, Foto 2ZMe-E2NBZ0 | Rohbauraum mit gespachteltem Gipskarton — Karte „Trockenbau", als Symbolbild gekennzeichnet |
-| `04-team-geruest-fassade-*` | IMG_8013 | Vier Leute über drei Gerüstlagen |
-| `05-arbeiter-geruest-untersicht-*` | IMG_8024 | Blick vom Gerüst nach oben |
-| `06-team-geruest-quer-*` | IMG_8010 | Zwei Leute über dem Fenstersturz |
+| `04-kachel-verputzer-kelle-*` | IMG_8023, quadratisch | Verputzer mit der Kelle — Kachel in „Aktuelle Baustelle" |
 | `07-inhaber-dachuntersicht-*` | IMG_7992 | Mann streicht die Dachuntersicht — Abschnitt „Über uns" |
 | `og-bild.jpg` | Standbild aus IMG_8026 | Vorschaubild beim Teilen per WhatsApp oder Facebook |
 
@@ -60,7 +58,9 @@ Liegen in `../video/`.
 |---|---|---|
 | `hero-mobil.mp4` | IMG_8027, Ausschnitt | Startseite am Handy — Verputzer lehnt aus dem Gerüst und zieht den Putz ab |
 | `hero-desktop.mp4` | IMG_8026 | Startseite am großen Bildschirm — ganze Fassade, stabilisiert |
-| `baustelle.mp4` | IMG_8025 | Abschnitt „Aktuelle Baustelle" |
+| `kachel-geruest-team.mp4` | IMG_8014, halbe Geschwindigkeit | Kachel: drei Handwerker am Gerüst |
+| `kachel-haus-geruest.mp4` | IMG_8002, beruhigt | Kachel: Haus mit Gerüst im Abendlicht |
+| `kachel-fassade-arbeiter.mp4` | IMG_8025, Stück 1,7–5,7 s | Kachel: Handwerker auf zwei Gerüstlagen |
 
 **Der Film am großen Bildschirm ist stabilisiert**, als stünde die Kamera auf einem Stativ. Das
 iPhone hatte schon selbst ruhig gehalten — nachgemessen springt das Bild von Einzelbild zu
@@ -77,7 +77,19 @@ hoch. Gemessen (VMAF, dargestellt wie auf einem 2560er-Monitor) stieg die Bildqu
 vollständige Messreihe steht im Skript. Die Größe bremst den Seitenaufbau nicht, weil der
 Film erst nach dem Standbild und nur bei guter Verbindung geladen wird.
 
-Der Baustellenfilm ist bewusst **nicht** stabilisiert — dort schwenkt die Kamera absichtlich.
+**Die Galerie „Aktuelle Baustelle" besteht aus vier kleinen, quadratischen Kacheln** (drei
+Filme, ein Foto, je 600 × 600). Vorher standen dort ein großer Film und drei hohe Fotos, das
+war zu groß. Die Filme laufen erst an, wenn der Abschnitt in die Nähe kommt.
+
+- **IMG_8014** ist nur 1,9 s lang und läuft deshalb halb so schnell. Die Aufnahme hat 60 Bilder
+  pro Sekunde, verlangsamt sind es 30 echte statt verdoppelter. Von sich aus ruhig.
+- **IMG_8002** ist wie der frühere Handy-Hero im Stativ-Modus beruhigt. Das Quadrat beginnt
+  bei 24 % der Breite, so sind weder das Banner der Gerüstbaufirma noch das Dixi-Klo zu sehen.
+- **IMG_8025** schwenkt am Ende stark (Abdriften 212 Promille der Bildbreite). Genommen wird
+  nur das ruhige Stück von 1,7 bis 5,7 s (Abdriften 5 Promille), mittig zugeschnitten.
+
+Alle Kacheln sind etwas heller abgestimmt als die Hero-Filme; in der kleinen Größe wirkten die
+Weißen so klar statt grau.
 
 **Der Handy-Film ist eine Nahaufnahme** (IMG_8027): Der Verputzer lehnt aus dem Gerüst und
 zieht den Putz ab. Am Handy bleibt vom Hero nur die obere Bildhälfte frei — Absatz und
